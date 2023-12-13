@@ -10,5 +10,4 @@ Welcome to python_blog's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-   notebooks/Test
    12/12/2023 - Modifying a deepcopy of os.environ changes the lookup from the shell, but not the os.environ state <notebooks/deepCopy_osEnviron_shellVsPythonDiscrepancy>
