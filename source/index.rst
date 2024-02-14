@@ -11,3 +11,4 @@ Welcome to python_blog's documentation!
    :caption: Contents:
 
    12/12/2023 - Modifying a deepcopy of os.environ changes the lookup from the shell, but not the os.environ state <notebooks/deepCopy_osEnviron_shellVsPythonDiscrepancy>
+   2/14/2024  - Threading guide <notebooks/threading_guide>
