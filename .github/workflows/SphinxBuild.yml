@@ -35,7 +35,8 @@ jobs:
         pip install -r requirements.txt
     
     - name: Install pandoc
-        run: sudo apt-get install -y pandoc
+        run: |
+        sudo apt-get install -y pandoc
 
     # (optional) Cache your executed notebooks between runs
     # if you have config:
@@ -52,22 +53,11 @@ jobs:
       run: |
         jupyter-book build .
 
-    # Upload the book's HTML as an artifact
-    - name: Upload artifact
-      uses: actions/upload-pages-artifact@v2
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v1
       with:
-        path: "_build/html"
-
-    # Deploy the book's HTML to GitHub Pages
-    - name: Deploy to GitHub Pages
-      id: deployment
-      uses: actions/deploy-pages@v2
-
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v1
-        with:
-          name: html-docs
-          path: ./build/html/
+        name: html-docs
+        path: ./build/html/
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
