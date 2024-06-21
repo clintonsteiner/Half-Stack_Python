@@ -5,6 +5,7 @@ ipython_genutils
 ipywidgets
 markupsafe==2.0.1
 myst-parser
+jupyter-sphinx
 nbsphinx
 nbsphinx-link
 shapely
