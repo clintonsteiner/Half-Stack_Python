@@ -13,7 +13,7 @@ author = "cs"
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = []
+extensions = ['sphinx.ext.autosectionlabel']
 nbsphinx_allow_errors = True
 extensions = [
     "nbsphinx",
