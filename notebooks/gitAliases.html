@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>&lt;no title&gt; &mdash; python_blog  documentation</title>
+  <title>Git aliases &mdash; python_blog  documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css" />
@@ -49,9 +49,10 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="deepCopy_osEnviron_shellVsPythonDiscrepancy.html">12/12/2023 - Modifying a deepcopy of os.environ changes the lookup from the shell, but not the os.environ state</a></li>
 <li class="toctree-l1"><a class="reference internal" href="threading_guide.html">2/14/2024  - Threading guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">5/11/2024  - Most used bash aliases for linux dev</a></li>
 <li class="toctree-l1"><a class="reference internal" href="JenkinsPythonAutomation.html">6/21/2024  - Jenkins automation in Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="BashCmdExamples.html">6/22/2024  - Useful Bash Commands</a></li>
 </ul>
@@ -70,7 +71,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">&lt;no title&gt;</li>
+      <li class="breadcrumb-item active">Git aliases</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/notebooks/gitAliases.ipynb.txt" rel="nofollow"> View page source</a>
       </li>
@@ -80,7 +81,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="nbinput docutils container">
+  <section id="Git-aliases">
+<h1>Git aliases<a class="headerlink" href="#Git-aliases" title="Link to this heading"></a></h1>
+<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
@@ -115,6 +118,7 @@
 &#39;\n#My most used bash aliases\nalias ..=\&#39;cd ../\&#39;\nalias ...=\&#39;cd ../../\&#39;\nalias ....=\&#39;cd ../../../\&#39;\n\nalias gd=\&#39;git diff\&#39;\nalias gds=\&#39;git diff --staged\&#39;\nalias gs=\&#39;git status\&#39;\nalias ga=\&#39;git add\&#39;\nalias gr=\&#39;git restore\&#39;\nalias grs=\&#39;git restore --staged\&#39;\nalias gc=\&#39;git commit\&#39;\nalias gcm=\&#39;git commit -m\&#39;\nalias gca=\&#39;git commit --amend --no-edit --date=now\&#39;\nalias gb=\&#39;git branch\&#39;\nalias gbdates=&#34;git for-each-ref --sort=committerdate refs/heads/ --format=\&#39;%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents-subject) - %(authorname) (%(color:green)%(committerdate:short)%color:reset))\&#39;&#34;\nalias gbresethard=\&#39;git reset --hard @{u}\&#39;\n&#39;
 </pre></div></div>
 </div>
+</section>
 
 
            </div>
