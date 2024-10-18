@@ -14,3 +14,4 @@ Welcome to python_blog's documentation!
    5/11/2024  - Most used bash aliases for linux dev <notebooks/gitAliases>
    6/21/2024  - Jenkins automation in Python <notebooks/JenkinsPythonAutomation>
    6/22/2024  - Useful Bash Commands <notebooks/BashCmdExamples>
+   10/17/2024 - PYTHONPATH Tricks <notebooks/pythonPathTricks>
