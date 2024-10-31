@@ -1,8 +1,8 @@
-Example Bundling of Package
-###########################
+Example Bundling of Package with NPM
+####################################
 
 Install Verdaccio
-#################
+*****************
 
 .. code-block:: bash
    :linenos:
@@ -11,7 +11,7 @@ Install Verdaccio
     verdaccio
 
 Create example package
-######################
+**********************
 
 .. code:: bash
    :linenos:

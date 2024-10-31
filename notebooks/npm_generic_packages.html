@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Example Bundling of Package &mdash; python_blog  documentation</title>
+  <title>Example Bundling of Package with NPM &mdash; python_blog  documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
@@ -50,9 +50,9 @@
 <li class="toctree-l1"><a class="reference internal" href="JenkinsPythonAutomation.html">6/21/2024  - Jenkins automation in Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="BashCmdExamples.html">6/22/2024  - Useful Bash Commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pythonPathTricks.html">10/17/2024 - PYTHONPATH Tricks</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Example Bundling of Package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#install-verdaccio">Install Verdaccio</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#create-example-package">Create example package</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">10/31/2024 - Generic npm packageing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#install-verdaccio">Install Verdaccio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#create-example-package">Create example package</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#create-package-json-file-inside-mypackage">Create package.json file inside myPackage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#package-and-upload-to-local-npm-server">Package and upload to local npm server</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#install-and-view-package">Install and view package</a></li>
@@ -74,7 +74,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Example Bundling of Package</li>
+      <li class="breadcrumb-item active">Example Bundling of Package with NPM</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/notebooks/npm_generic_packages.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -84,24 +84,24 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="example-bundling-of-package">
-<h1>Example Bundling of Package<a class="headerlink" href="#example-bundling-of-package" title="Link to this heading"></a></h1>
-</section>
+  <section id="example-bundling-of-package-with-npm">
+<h1>Example Bundling of Package with NPM<a class="headerlink" href="#example-bundling-of-package-with-npm" title="Link to this heading"></a></h1>
 <section id="install-verdaccio">
-<h1>Install Verdaccio<a class="headerlink" href="#install-verdaccio" title="Link to this heading"></a></h1>
+<h2>Install Verdaccio<a class="headerlink" href="#install-verdaccio" title="Link to this heading"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="w"> </span>npm<span class="w"> </span>install<span class="w"> </span>verdaccio
 <span class="linenos">2</span><span class="w"> </span>verdaccio
 </pre></div>
 </div>
 </section>
 <section id="create-example-package">
-<h1>Create example package<a class="headerlink" href="#create-example-package" title="Link to this heading"></a></h1>
+<h2>Create example package<a class="headerlink" href="#create-example-package" title="Link to this heading"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="w"> </span>head<span class="w"> </span>-c<span class="w"> </span>100M<span class="w"> </span>&lt;/dev/urandom<span class="w"> </span>&gt;<span class="w"> </span>myfile
 <span class="linenos">2</span>
 <span class="linenos">3</span><span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>myPackage/files/
 <span class="linenos">4</span><span class="w"> </span>tar<span class="w"> </span>-czf<span class="w"> </span>./myPackage/files/myPackage-1.0.0.tgz<span class="w"> </span>myfile
 </pre></div>
 </div>
+</section>
 <section id="create-package-json-file-inside-mypackage">
 <h2>Create package.json file inside myPackage<a class="headerlink" href="#create-package-json-file-inside-mypackage" title="Link to this heading"></a></h2>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
