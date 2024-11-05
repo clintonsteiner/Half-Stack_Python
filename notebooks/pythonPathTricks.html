@@ -124,7 +124,7 @@
     <span class="kn">import</span> <span class="nn">package</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Currently loaded package version </span><span class="si">{</span><span class="n">package</span><span class="o">.</span><span class="n">version</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span>
 
-<span class="k">if</span> <span class="s1">&#39;package&#39;</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">:</span>
+<span class="k">if</span> <span class="s1">&#39;package&#39;</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
     <span class="c1"># If already imported from somewhere else, remove</span>
     <span class="n">printPackageVersion</span><span class="p">()</span>
     <span class="k">del</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="n">MODULE</span><span class="p">]</span>
@@ -159,8 +159,8 @@
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 <span class="ansi-cyan-fg">  Cell </span><span class="ansi-green-fg">In[1], line 10</span>
-<span class="ansi-red-fg">    if &#39;package&#39; in sys.modules:</span>
-                               ^
+<span class="ansi-red-fg">    if &#39;package&#39; in sys.modules.keys():</span>
+                                      ^
 <span class="ansi-red-fg">SyntaxError</span><span class="ansi-red-fg">:</span> invalid syntax
 
 </pre></div></div>
