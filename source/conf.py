@@ -7,7 +7,7 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = "python_blog"
-copyright = "2023, cs"
+copyright = "2024, cs"
 author = "cs"
 
 # -- General configuration ---------------------------------------------------
