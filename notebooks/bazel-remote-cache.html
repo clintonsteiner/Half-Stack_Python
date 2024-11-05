@@ -55,6 +55,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#install-and-run-bazel-remote-build-cache">Install and run bazel-remote build cache</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#upload-tarball">Upload tarball</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#download-generic-tarball">Download generic tarball</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#my-generic-package-contents-package-json">my-generic-package contents: package.json</a></li>
 </ul>
 </li>
 </ul>
@@ -100,15 +101,31 @@ file in a .tar.gz zip</p>
 </section>
 <section id="upload-tarball">
 <h2>Upload tarball<a class="headerlink" href="#upload-tarball" title="Link to this heading"></a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-o<span class="w"> </span>./generic.tar.gz<span class="w"> </span>http://localhost:8080/cache/cas/739ac58f6dc82cf2e62df56e07eda32213aa7e3148e1ff4a71b0be329c6f27d2
-</pre></div>
-</div>
 </section>
 <section id="download-generic-tarball">
 <h2>Download generic tarball<a class="headerlink" href="#download-generic-tarball" title="Link to this heading"></a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-o<span class="w"> </span>./generic.tar.gz<span class="w"> </span>http://localhost:8080/cache/cas/739ac58f6dc82cf2e62df56e07eda32213aa7e3148e1ff4a71b0be329c6f27d2
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-o<span class="w"> </span>./generic.tar.gz<span class="w"> </span>http://localhost:8080/cache/cas/5f4f12461a593abdff2a279e72697574b2086ace76def0adc9db593ff8e5354f
 </pre></div>
 </div>
+</section>
+<section id="my-generic-package-contents-package-json">
+<h2>my-generic-package contents: package.json<a class="headerlink" href="#my-generic-package-contents-package-json" title="Link to this heading"></a></h2>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<dl>
+<dt>{</dt><dd><p>“name”: “my-generic-package”,
+“version”: “1.0.1”,
+“description”: “A generic package tarball”,
+“main”: “index.js”,
+“files”: [</p>
+<blockquote>
+<div><p>“files/my-tarball.tgz”</p>
+</div></blockquote>
+<p>]</p>
+</dd>
+</dl>
+<p>}</p>
 </section>
 </section>
 
