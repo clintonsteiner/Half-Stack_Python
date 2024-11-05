@@ -22,14 +22,28 @@ Confirm working
 Upload tarball
 **************
 .. code-block:: bash
-
-   curl -o ./generic.tar.gz http://localhost:8080/cache/cas/739ac58f6dc82cf2e62df56e07eda32213aa7e3148e1ff4a71b0be329c6f27d2
+    sha256sum my-generic-package.tar.gz
+    curl http://localhost:8080/cache/cas/c8bd358bd7eaa09bc206d3e6140c5cfcc5fdb90a0c0799155427ab75a519f123 --upload-file my-generic-package.tar.gz 
 
 Download generic tarball
 ************************
 .. code-block:: bash
    
-   curl -o ./generic.tar.gz http://localhost:8080/cache/cas/739ac58f6dc82cf2e62df56e07eda32213aa7e3148e1ff4a71b0be329c6f27d2
-
+    curl -o ./generic.tar.gz http://localhost:8080/cache/cas/5f4f12461a593abdff2a279e72697574b2086ace76def0adc9db593ff8e5354f
 
    
+my-generic-package contents: package.json
+***************************
+.. code-block:: json
+
+{
+  "name": "my-generic-package",
+  "version": "1.0.1",
+  "description": "A generic package tarball",
+  "main": "index.js",
+  "files": [
+    "files/my-tarball.tgz"
+  ]
+}
+
+
