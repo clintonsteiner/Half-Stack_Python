@@ -95,7 +95,9 @@
 <span class="c1">#with open(jenkinsFile, &#39;r&#39;) as file:</span>
 <span class="c1">#    script = file.read()</span>
 <span class="n">script</span> <span class="o">=</span> <span class="s1">&#39;MockJenkinsScript&#39;</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;MockJenkinsScript&#39;</span>
 <span class="n">jenkins</span> <span class="o">=</span> <span class="n">Jenkins</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">uname</span><span class="p">,</span> <span class="n">apikey</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">120</span><span class="p">)</span>
+<span class="n">jobUrl</span> <span class="o">=</span> <span class="s1">&#39;MockJenkinsScript&#39;</span>
 <span class="n">job</span> <span class="o">=</span> <span class="n">jenkins</span><span class="o">.</span><span class="n">get_job_by_url</span><span class="p">(</span><span class="n">jobUrl</span><span class="p">,</span> <span class="n">job_name</span><span class="o">=</span><span class="s1">&#39;Example&#39;</span><span class="p">)</span>
 <span class="n">config</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">get_config</span><span class="p">()</span>
 <span class="n">parsedXml</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
@@ -115,15 +117,14 @@
 <div class="highlight"><pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[1], line 9</span>
-<span class="ansi-green-intense-fg ansi-bold">      6</span> <span style="color: rgb(95,135,135)">#with open(jenkinsFile, &#39;r&#39;) as file:</span>
-<span class="ansi-green-intense-fg ansi-bold">      7</span> <span style="color: rgb(95,135,135)">#    script = file.read()</span>
+Cell <span class="ansi-green-fg">In[1], line 10</span>
 <span class="ansi-green-intense-fg ansi-bold">      8</span> script <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">MockJenkinsScript</span><span style="color: rgb(175,0,0)">&#39;</span>
-<span class="ansi-green-fg">----&gt; 9</span> jenkins <span style="color: rgb(98,98,98)">=</span> Jenkins(<span class="ansi-yellow-bg">url</span>, uname, apikey, timeout<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(98,98,98)">120</span>)
-<span class="ansi-green-intense-fg ansi-bold">     10</span> job <span style="color: rgb(98,98,98)">=</span> jenkins<span style="color: rgb(98,98,98)">.</span>get_job_by_url(jobUrl, job_name<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">Example</span><span style="color: rgb(175,0,0)">&#39;</span>)
-<span class="ansi-green-intense-fg ansi-bold">     11</span> config <span style="color: rgb(98,98,98)">=</span> job<span style="color: rgb(98,98,98)">.</span>get_config()
+<span class="ansi-green-intense-fg ansi-bold">      9</span> url <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">MockJenkinsScript</span><span style="color: rgb(175,0,0)">&#39;</span>
+<span class="ansi-green-fg">---&gt; 10</span> jenkins <span style="color: rgb(98,98,98)">=</span> Jenkins(url, <span class="ansi-yellow-bg">uname</span>, apikey, timeout<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(98,98,98)">120</span>)
+<span class="ansi-green-intense-fg ansi-bold">     11</span> jobUrl <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">MockJenkinsScript</span><span style="color: rgb(175,0,0)">&#39;</span>
+<span class="ansi-green-intense-fg ansi-bold">     12</span> job <span style="color: rgb(98,98,98)">=</span> jenkins<span style="color: rgb(98,98,98)">.</span>get_job_by_url(jobUrl, job_name<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">Example</span><span style="color: rgb(175,0,0)">&#39;</span>)
 
-<span class="ansi-red-fg">NameError</span>: name &#39;url&#39; is not defined
+<span class="ansi-red-fg">NameError</span>: name &#39;uname&#39; is not defined
 </pre></div></div>
 </div>
 </section>
