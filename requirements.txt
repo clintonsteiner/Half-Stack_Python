@@ -1,5 +1,3 @@
-folium
-geopandas>=0.9.0
 ipython
 ipython_genutils
 ipywidgets
