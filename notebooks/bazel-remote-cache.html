@@ -1,0 +1,136 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Example using bazel-remote-cache to host packages &mdash; python_blog  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            python_blog
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="deepCopy_osEnviron_shellVsPythonDiscrepancy.html">12/12/2023 - Modifying a deepcopy of os.environ changes the lookup from the shell, but not the os.environ state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="threading_guide.html">2/14/2024  - Threading guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gitAliases.html">5/11/2024  - Most used bash aliases for linux dev</a></li>
+<li class="toctree-l1"><a class="reference internal" href="JenkinsPythonAutomation.html">6/21/2024  - Jenkins automation in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BashCmdExamples.html">6/22/2024  - Useful Bash Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pythonPathTricks.html">10/17/2024 - PYTHONPATH Tricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="npm_generic_packages.html">10/31/2024 - Generic npm packageing</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">python_blog</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Example using bazel-remote-cache to host packages</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/notebooks/bazel-remote-cache.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="example-using-bazel-remote-cache-to-host-packages">
+<h1>Example using bazel-remote-cache to host packages<a class="headerlink" href="#example-using-bazel-remote-cache-to-host-packages" title="Link to this heading"></a></h1>
+<section id="install-and-run-bazel-remote-build-cache">
+<h2>Install and run bazel-remote build cache<a class="headerlink" href="#install-and-run-bazel-remote-build-cache" title="Link to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>/opt/homebrew/bin/bazel-remote<span class="w"> </span>--max_size<span class="w"> </span><span class="m">1000</span><span class="w"> </span><span class="se">\</span>
+<span class="linenos">2</span>--dir<span class="w"> </span>/Users/cs/bazel_cache<span class="w"> </span>--profile_host<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span><span class="se">\</span>
+<span class="linenos">3</span>--profile_port<span class="w"> </span><span class="m">8000</span><span class="w"> </span>--enable_endpoint_metrics
+</pre></div>
+</div>
+<p>As before our tarball will be essentially blank consisting of one
+file in a .tar.gz zip</p>
+<blockquote>
+<div><p>curl <a class="reference external" href="http://localhost:8080/status">http://localhost:8080/status</a></p>
+</div></blockquote>
+</section>
+<section id="upload-tarball">
+<h2>Upload tarball<a class="headerlink" href="#upload-tarball" title="Link to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-o<span class="w"> </span>./generic.tar.gz<span class="w"> </span>http://localhost:8080/cache/cas/739ac58f6dc82cf2e62df56e07eda32213aa7e3148e1ff4a71b0be329c6f27d2
+</pre></div>
+</div>
+</section>
+<section id="download-generic-tarball">
+<h2>Download generic tarball<a class="headerlink" href="#download-generic-tarball" title="Link to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-o<span class="w"> </span>./generic.tar.gz<span class="w"> </span>http://localhost:8080/cache/cas/739ac58f6dc82cf2e62df56e07eda32213aa7e3148e1ff4a71b0be329c6f27d2
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, cs.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
