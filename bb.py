@@ -18,11 +18,5 @@ def create_venv():
 
     subprocess.check_call([sys.executable, "-m", "pip", "install", "-r", "requirements.txt"])
     sphinx = os.path.join(VENV_PATH, "bin", "sphinx-build")
-    subprocess.check_call([sphinx, "-b", "html", SOURCE_DIR, BUILD_DIR])
-    try:
-        subprocess.check_output([sys.executable, "-m", "http.server", "-d", BUILD_DIR], stderr=subprocess.STDOUT)
-    except Exception:
-        pass
-
 
 create_venv()
