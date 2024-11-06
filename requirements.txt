@@ -1,7 +1,7 @@
 ipython
 ipython_genutils
 ipywidgets
-markupsafe==3.0.2
+markupsafe
 myst-parser
 jupyter-sphinx
 nbsphinx
