@@ -37,14 +37,11 @@ my-generic-package contents: package.json
 ***************************
 .. code-block:: json
 
-{
-  "name": "my-generic-package",
-  "version": "1.0.1",
-  "description": "A generic package tarball",
-  "main": "index.js",
-  "files": [
-    "files/my-tarball.tgz"
-  ]
-}
-
+	{
+	  "name": "my-generic-package",
+	  "version": "1.0.1",
+	  "description": "A generic package tarball",
+	  "main": "index.js",
+	  "files": ["files/my-tarball.tgz"]
+	}
 
