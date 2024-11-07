@@ -17,3 +17,4 @@ Welcome to python_blog's documentation!
    10/17/2024 - PYTHONPATH Tricks <notebooks/pythonPathTricks>
    10/31/2024 - Generic npm packageing <notebooks/npm_generic_packages>
    11/05/2024 - Generic package caching with bazel remote cache <notebooks/bazel-remote-cache>
+   11/07/2024 - Jenkins agent path variables <notebooks/Jenkins_tips>
