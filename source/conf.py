@@ -6,9 +6,9 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = "python_blog"
-copyright = "2024, cs"
-author = "cs"
+project = "Half Stack Python"
+copyright = "2024, CS"
+author = "CS"
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
