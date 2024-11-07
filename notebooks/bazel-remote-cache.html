@@ -48,11 +48,13 @@
 <li class="toctree-l1"><a class="reference internal" href="deepCopy_osEnviron_shellVsPythonDiscrepancy.html">12/12/2023 - Modifying a deepcopy of os.environ changes the lookup from the shell, but not the os.environ state</a></li>
 <li class="toctree-l1"><a class="reference internal" href="threading_guide.html">2/14/2024  - Threading guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gitAliases.html">5/11/2024  - Most used bash aliases for linux dev</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jenkins/20240621_jenkins_python_automation.html">6/21/2024  - Jenkins automation in Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="BashCmdExamples.html">6/22/2024  - Useful Bash Commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pythonPathTricks.html">10/17/2024 - PYTHONPATH Tricks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="npm_generic_packages.html">10/31/2024 - Generic npm packageing</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">11/05/2024 - Generic package caching with bazel remote cache</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#install-and-run-bazel-remote-build-cache">Install and run bazel-remote build cache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#confirm-working">Confirm working</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#upload-tarball">Upload tarball</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#download-generic-tarball">Download generic tarball</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#my-generic-package-contents-package-json">my-generic-package contents: package.json</a></li>
@@ -96,12 +98,19 @@
 </div>
 <p>As before our tarball will be essentially blank consisting of one
 file in a .tar.gz zip</p>
-<blockquote>
-<div><p>curl <a class="reference external" href="http://localhost:8080/status">http://localhost:8080/status</a></p>
-</div></blockquote>
+</section>
+<section id="confirm-working">
+<h2>Confirm working<a class="headerlink" href="#confirm-working" title="Link to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>http://localhost:8080/status
+</pre></div>
+</div>
 </section>
 <section id="upload-tarball">
 <h2>Upload tarball<a class="headerlink" href="#upload-tarball" title="Link to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sha256sum<span class="w"> </span>my-generic-package.tar.gz
+curl<span class="w"> </span>http://localhost:8080/cache/cas/c8bd358bd7eaa09bc206d3e6140c5cfcc5fdb90a0c0799155427ab75a519f123<span class="w"> </span>--upload-file<span class="w"> </span>my-generic-package.tar.gz
+</pre></div>
+</div>
 </section>
 <section id="download-generic-tarball">
 <h2>Download generic tarball<a class="headerlink" href="#download-generic-tarball" title="Link to this heading"></a></h2>
