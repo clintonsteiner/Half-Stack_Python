@@ -19,7 +19,9 @@
       <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Example using bazel-remote-cache to host packages" href="20241105_bazel_remote_cache.html" />
+    <link rel="prev" title="PYTHONPATH Tricks" href="python/20241017_python_path_tricks.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -42,14 +44,21 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="python/20231212_deep_copy_os_environ_shell_vs_python_discrepancy.html">12/12/2023 - Modifying a deepcopy of os.environ changes the lookup from the shell, but not the os.environ state</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python/20240214_threading_guide.html">2/14/2024  - Threading guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="20240511_git_aliases.html">5/11/2024  - Most used bash aliases for linux dev</a></li>
 <li class="toctree-l1"><a class="reference internal" href="jenkins/20240621_jenkins_python_automation.html">6/21/2024  - Jenkins automation in Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="20240622_bash_cmd_examples.html">6/22/2024  - Useful Bash Commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python/20241017_python_path_tricks.html">10/17/2024 - PYTHONPATH Tricks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="20241031_npm_generic_packages.html">10/31/2024 - Generic npm packageing</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">10/31/2024 - Generic npm packageing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#install-verdaccio">Install Verdaccio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#create-example-package">Create example package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#create-package-json-file-inside-mypackage">Create package.json file inside myPackage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#package-and-upload-to-local-npm-server">Package and upload to local npm server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#install-and-view-package">Install and view package</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="20241105_bazel_remote_cache.html">11/05/2024 - Generic package caching with bazel remote cache</a></li>
 <li class="toctree-l1"><a class="reference internal" href="jenkins/20241107_jenkins_agent_path_variables.html">11/07/2024 - Jenkins agent path variables</a></li>
 </ul>
@@ -70,7 +79,7 @@
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
       <li class="breadcrumb-item active">Example Bundling of Package with NPM</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/notebooks/npm_generic_packages.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/notebooks/20241031_npm_generic_packages.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -129,7 +138,10 @@
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="python/20241017_python_path_tricks.html" class="btn btn-neutral float-left" title="PYTHONPATH Tricks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="20241105_bazel_remote_cache.html" class="btn btn-neutral float-right" title="Example using bazel-remote-cache to host packages" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 

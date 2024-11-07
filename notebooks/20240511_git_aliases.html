@@ -6,9 +6,10 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Run cmd on git output &mdash; python_blog  documentation</title>
+  <title>Git aliases &mdash; python_blog  documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
 
   
       <script src="../_static/jquery.js?v=5d32c60e"></script>
@@ -21,7 +22,9 @@
       <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Jenkins Python Automation" href="jenkins/20240621_jenkins_python_automation.html" />
+    <link rel="prev" title="Threading python examples" href="python/20240214_threading_guide.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -44,10 +47,10 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="python/20231212_deep_copy_os_environ_shell_vs_python_discrepancy.html">12/12/2023 - Modifying a deepcopy of os.environ changes the lookup from the shell, but not the os.environ state</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python/20240214_threading_guide.html">2/14/2024  - Threading guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="20240511_git_aliases.html">5/11/2024  - Most used bash aliases for linux dev</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">5/11/2024  - Most used bash aliases for linux dev</a></li>
 <li class="toctree-l1"><a class="reference internal" href="jenkins/20240621_jenkins_python_automation.html">6/21/2024  - Jenkins automation in Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="20240622_bash_cmd_examples.html">6/22/2024  - Useful Bash Commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python/20241017_python_path_tricks.html">10/17/2024 - PYTHONPATH Tricks</a></li>
@@ -70,9 +73,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Run cmd on git output</li>
+      <li class="breadcrumb-item active">Git aliases</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/notebooks/BashCmdExamples.ipynb.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/notebooks/20240511_git_aliases.ipynb.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -80,15 +83,52 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="Run-cmd-on-git-output">
-<h1>Run cmd on git output<a class="headerlink" href="#Run-cmd-on-git-output" title="Link to this heading"></a></h1>
-<p>git status ./<em>Jenkinsfile.cert</em> | grep Jenk | awk -F ‘:’ ‘{print $2}’ | sed ‘s/ //g’ | xargs -I {} ./cmd.py {}</p>
+  <section id="Git-aliases">
+<h1>Git aliases<a class="headerlink" href="#Git-aliases" title="Link to this heading"></a></h1>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">#My most used bash aliases</span>
+<span class="sd">alias ..=&#39;cd ../&#39;</span>
+<span class="sd">alias ...=&#39;cd ../../&#39;</span>
+<span class="sd">alias ....=&#39;cd ../../../&#39;</span>
+
+<span class="sd">alias gd=&#39;git diff&#39;</span>
+<span class="sd">alias gds=&#39;git diff --staged&#39;</span>
+<span class="sd">alias gs=&#39;git status&#39;</span>
+<span class="sd">alias ga=&#39;git add&#39;</span>
+<span class="sd">alias gr=&#39;git restore&#39;</span>
+<span class="sd">alias grs=&#39;git restore --staged&#39;</span>
+<span class="sd">alias gc=&#39;git commit&#39;</span>
+<span class="sd">alias gcm=&#39;git commit -m&#39;</span>
+<span class="sd">alias gca=&#39;git commit --amend --no-edit --date=now&#39;</span>
+<span class="sd">alias gb=&#39;git branch&#39;</span>
+<span class="sd">alias gbdates=&quot;git for-each-ref --sort=committerdate refs/heads/ --format=&#39;%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents-subject) - %(authorname) (%(color:green)%(committerdate:short)%color:reset))&#39;&quot;</span>
+<span class="sd">alias gbresethard=&#39;git reset --hard @{u}&#39;</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&#39;\n#My most used bash aliases\nalias ..=\&#39;cd ../\&#39;\nalias ...=\&#39;cd ../../\&#39;\nalias ....=\&#39;cd ../../../\&#39;\n\nalias gd=\&#39;git diff\&#39;\nalias gds=\&#39;git diff --staged\&#39;\nalias gs=\&#39;git status\&#39;\nalias ga=\&#39;git add\&#39;\nalias gr=\&#39;git restore\&#39;\nalias grs=\&#39;git restore --staged\&#39;\nalias gc=\&#39;git commit\&#39;\nalias gcm=\&#39;git commit -m\&#39;\nalias gca=\&#39;git commit --amend --no-edit --date=now\&#39;\nalias gb=\&#39;git branch\&#39;\nalias gbdates=&#34;git for-each-ref --sort=committerdate refs/heads/ --format=\&#39;%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents-subject) - %(authorname) (%(color:green)%(committerdate:short)%color:reset))\&#39;&#34;\nalias gbresethard=\&#39;git reset --hard @{u}\&#39;\n&#39;
+</pre></div></div>
+</div>
 </section>
 
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="python/20240214_threading_guide.html" class="btn btn-neutral float-left" title="Threading python examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="jenkins/20240621_jenkins_python_automation.html" class="btn btn-neutral float-right" title="Jenkins Python Automation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 

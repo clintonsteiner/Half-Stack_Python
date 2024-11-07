@@ -23,8 +23,8 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Run cmd on git output" href="../BashCmdExamples.html" />
-    <link rel="prev" title="Git aliases" href="../gitAliases.html" /> 
+    <link rel="next" title="Run cmd on git output" href="../20240622_bash_cmd_examples.html" />
+    <link rel="prev" title="Git aliases" href="../20240511_git_aliases.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -48,15 +48,15 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../deepCopy_osEnviron_shellVsPythonDiscrepancy.html">12/12/2023 - Modifying a deepcopy of os.environ changes the lookup from the shell, but not the os.environ state</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../threading_guide.html">2/14/2024  - Threading guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../gitAliases.html">5/11/2024  - Most used bash aliases for linux dev</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/20231212_deep_copy_os_environ_shell_vs_python_discrepancy.html">12/12/2023 - Modifying a deepcopy of os.environ changes the lookup from the shell, but not the os.environ state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/20240214_threading_guide.html">2/14/2024  - Threading guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20240511_git_aliases.html">5/11/2024  - Most used bash aliases for linux dev</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">6/21/2024  - Jenkins automation in Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../BashCmdExamples.html">6/22/2024  - Useful Bash Commands</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../pythonPathTricks.html">10/17/2024 - PYTHONPATH Tricks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../npm_generic_packages.html">10/31/2024 - Generic npm packageing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../bazel-remote-cache.html">11/05/2024 - Generic package caching with bazel remote cache</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Jenkins_tips.html">11/07/2024 - Jenkins agent path variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20240622_bash_cmd_examples.html">6/22/2024  - Useful Bash Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/20241017_python_path_tricks.html">10/17/2024 - PYTHONPATH Tricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20241031_npm_generic_packages.html">10/31/2024 - Generic npm packageing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20241105_bazel_remote_cache.html">11/05/2024 - Generic package caching with bazel remote cache</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20241107_jenkins_agent_path_variables.html">11/07/2024 - Jenkins agent path variables</a></li>
 </ul>
 
         </div>
@@ -90,6 +90,7 @@
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># JenkinsPythonAutomation</span>
+<span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">xml.etree.ElementTree</span> <span class="k">as</span> <span class="nn">ET</span>
 <span class="kn">from</span> <span class="nn">jenkinsapi.jenkins</span> <span class="kn">import</span> <span class="n">Jenkins</span>
 
@@ -98,6 +99,8 @@
 <span class="c1">#    script = file.read()</span>
 <span class="n">script</span> <span class="o">=</span> <span class="s1">&#39;MockJenkinsScript&#39;</span>
 <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;MockJenkinsScript&#39;</span>
+<span class="n">apikey</span> <span class="o">=</span> <span class="s1">&#39;MockApiKey&#39;</span>
+<span class="n">uname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;USER&#39;</span><span class="p">)</span>
 <span class="n">jenkins</span> <span class="o">=</span> <span class="n">Jenkins</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">uname</span><span class="p">,</span> <span class="n">apikey</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">120</span><span class="p">)</span>
 <span class="n">jobUrl</span> <span class="o">=</span> <span class="s1">&#39;MockJenkinsScript&#39;</span>
 <span class="n">job</span> <span class="o">=</span> <span class="n">jenkins</span><span class="o">.</span><span class="n">get_job_by_url</span><span class="p">(</span><span class="n">jobUrl</span><span class="p">,</span> <span class="n">job_name</span><span class="o">=</span><span class="s1">&#39;Example&#39;</span><span class="p">)</span>
@@ -118,15 +121,125 @@
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[1], line 10</span>
-<span class="ansi-green-intense-fg ansi-bold">      8</span> script <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">MockJenkinsScript</span><span style="color: rgb(175,0,0)">&#39;</span>
-<span class="ansi-green-intense-fg ansi-bold">      9</span> url <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">MockJenkinsScript</span><span style="color: rgb(175,0,0)">&#39;</span>
-<span class="ansi-green-fg">---&gt; 10</span> jenkins <span style="color: rgb(98,98,98)">=</span> Jenkins(url, <span class="ansi-yellow-bg">uname</span>, apikey, timeout<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(98,98,98)">120</span>)
-<span class="ansi-green-intense-fg ansi-bold">     11</span> jobUrl <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">MockJenkinsScript</span><span style="color: rgb(175,0,0)">&#39;</span>
-<span class="ansi-green-intense-fg ansi-bold">     12</span> job <span style="color: rgb(98,98,98)">=</span> jenkins<span style="color: rgb(98,98,98)">.</span>get_job_by_url(jobUrl, job_name<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">Example</span><span style="color: rgb(175,0,0)">&#39;</span>)
+<span class="ansi-red-fg">MissingSchema</span>                             Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[1], line 13</span>
+<span class="ansi-green-intense-fg ansi-bold">     11</span> apikey <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">MockApiKey</span><span style="color: rgb(175,0,0)">&#39;</span>
+<span class="ansi-green-intense-fg ansi-bold">     12</span> uname <span style="color: rgb(98,98,98)">=</span> os<span style="color: rgb(98,98,98)">.</span>environ<span style="color: rgb(98,98,98)">.</span>get(<span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">USER</span><span style="color: rgb(175,0,0)">&#39;</span>)
+<span class="ansi-green-fg">---&gt; 13</span> jenkins <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">Jenkins</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">url</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">uname</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">apikey</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">timeout</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">120</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     14</span> jobUrl <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">MockJenkinsScript</span><span style="color: rgb(175,0,0)">&#39;</span>
+<span class="ansi-green-intense-fg ansi-bold">     15</span> job <span style="color: rgb(98,98,98)">=</span> jenkins<span style="color: rgb(98,98,98)">.</span>get_job_by_url(jobUrl, job_name<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">Example</span><span style="color: rgb(175,0,0)">&#39;</span>)
 
-<span class="ansi-red-fg">NameError</span>: name &#39;uname&#39; is not defined
+File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.13.0/x64/lib/python3.13/site-packages/jenkinsapi/jenkins.py:86</span>, in <span class="ansi-cyan-fg">Jenkins.__init__</span><span class="ansi-blue-fg">(self, baseurl, username, password, requester, lazy, ssl_verify, cert, timeout, use_crumb, max_retries)</span>
+<span class="ansi-green-intense-fg ansi-bold">     84</span> <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>lazy <span style="color: rgb(98,98,98)">=</span> lazy
+<span class="ansi-green-intense-fg ansi-bold">     85</span> <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>jobs_container <span style="color: rgb(98,98,98)">=</span> <span class="ansi-bold" style="color: rgb(0,135,0)">None</span>
+<span class="ansi-green-fg">---&gt; 86</span> <span class="ansi-yellow-bg">JenkinsBase</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg" style="color: rgb(0,0,255)">__init__</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">baseurl</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">poll</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(175,0,255)">not</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">lazy</span><span class="ansi-yellow-bg">)</span>
+
+File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.13.0/x64/lib/python3.13/site-packages/jenkinsapi/jenkinsbase.py:39</span>, in <span class="ansi-cyan-fg">JenkinsBase.__init__</span><span class="ansi-blue-fg">(self, baseurl, poll)</span>
+<span class="ansi-green-intense-fg ansi-bold">     37</span> <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>baseurl <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>strip_trailing_slash(baseurl)
+<span class="ansi-green-intense-fg ansi-bold">     38</span> <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> poll:
+<span class="ansi-green-fg">---&gt; 39</span>     <span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">poll</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span>
+
+File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.13.0/x64/lib/python3.13/site-packages/jenkinsapi/jenkinsbase.py:62</span>, in <span class="ansi-cyan-fg">JenkinsBase.poll</span><span class="ansi-blue-fg">(self, tree)</span>
+<span class="ansi-green-intense-fg ansi-bold">     61</span> <span class="ansi-bold" style="color: rgb(0,135,0)">def</span> <span style="color: rgb(0,0,255)">poll</span>(<span style="color: rgb(0,135,0)">self</span>, tree<span style="color: rgb(98,98,98)">=</span><span class="ansi-bold" style="color: rgb(0,135,0)">None</span>):
+<span class="ansi-green-fg">---&gt; 62</span>     data <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">_poll</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">tree</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg">tree</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     63</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> <span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">jobs</span><span style="color: rgb(175,0,0)">&#34;</span> <span class="ansi-bold" style="color: rgb(175,0,255)">in</span> data:
+<span class="ansi-green-intense-fg ansi-bold">     64</span>         data[<span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">jobs</span><span style="color: rgb(175,0,0)">&#34;</span>] <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>resolve_job_folders(data[<span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">jobs</span><span style="color: rgb(175,0,0)">&#34;</span>])
+
+File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.13.0/x64/lib/python3.13/site-packages/jenkinsapi/jenkins.py:90</span>, in <span class="ansi-cyan-fg">Jenkins._poll</span><span class="ansi-blue-fg">(self, tree)</span>
+<span class="ansi-green-intense-fg ansi-bold">     88</span> <span class="ansi-bold" style="color: rgb(0,135,0)">def</span> <span style="color: rgb(0,0,255)">_poll</span>(<span style="color: rgb(0,135,0)">self</span>, tree<span style="color: rgb(98,98,98)">=</span><span class="ansi-bold" style="color: rgb(0,135,0)">None</span>):
+<span class="ansi-green-intense-fg ansi-bold">     89</span>     url <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>python_api_url(<span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>baseurl)
+<span class="ansi-green-fg">---&gt; 90</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">get_data</span><span class="ansi-yellow-bg">(</span>
+<span class="ansi-green-intense-fg ansi-bold">     91</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">url</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">tree</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#34;</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">jobs[name,color,url]</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#34;</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(0,135,0)">if</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(175,0,255)">not</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">tree</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(0,135,0)">else</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">tree</span>
+<span class="ansi-green-intense-fg ansi-bold">     92</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">)</span>
+
+File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.13.0/x64/lib/python3.13/site-packages/jenkinsapi/jenkinsbase.py:82</span>, in <span class="ansi-cyan-fg">JenkinsBase.get_data</span><span class="ansi-blue-fg">(self, url, params, tree)</span>
+<span class="ansi-green-intense-fg ansi-bold">     79</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">else</span>:
+<span class="ansi-green-intense-fg ansi-bold">     80</span>         params<span style="color: rgb(98,98,98)">.</span>update({<span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">tree</span><span style="color: rgb(175,0,0)">&#34;</span>: tree})
+<span class="ansi-green-fg">---&gt; 82</span> response <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">requester</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">get_url</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">url</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">params</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     83</span> <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> response<span style="color: rgb(98,98,98)">.</span>status_code <span style="color: rgb(98,98,98)">!=</span> <span style="color: rgb(98,98,98)">200</span>:
+<span class="ansi-green-intense-fg ansi-bold">     84</span>     logger<span style="color: rgb(98,98,98)">.</span>error(
+<span class="ansi-green-intense-fg ansi-bold">     85</span>         <span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">Failed request at </span><span class="ansi-bold" style="color: rgb(175,95,135)">%s</span><span style="color: rgb(175,0,0)"> with params: </span><span class="ansi-bold" style="color: rgb(175,95,135)">%s</span><span style="color: rgb(175,0,0)"> </span><span class="ansi-bold" style="color: rgb(175,95,135)">%s</span><span style="color: rgb(175,0,0)">&#34;</span>,
+<span class="ansi-green-intense-fg ansi-bold">     86</span>         url,
+<span class="ansi-green-intense-fg ansi-bold">     87</span>         params,
+<span class="ansi-green-intense-fg ansi-bold">     88</span>         tree <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> tree <span class="ansi-bold" style="color: rgb(0,135,0)">else</span> <span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">&#34;</span>,
+<span class="ansi-green-intense-fg ansi-bold">     89</span>     )
+
+File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.13.0/x64/lib/python3.13/site-packages/jenkinsapi/utils/requester.py:167</span>, in <span class="ansi-cyan-fg">Requester.get_url</span><span class="ansi-blue-fg">(self, url, params, headers, allow_redirects, stream)</span>
+<span class="ansi-green-intense-fg ansi-bold">    153</span> <span class="ansi-bold" style="color: rgb(0,135,0)">def</span> <span style="color: rgb(0,0,255)">get_url</span>(
+<span class="ansi-green-intense-fg ansi-bold">    154</span>     <span style="color: rgb(0,135,0)">self</span>,
+<span class="ansi-green-intense-fg ansi-bold">    155</span>     url,
+<span class="ansi-green-fg">   (...)</span>
+<span class="ansi-green-intense-fg ansi-bold">    159</span>     stream<span style="color: rgb(98,98,98)">=</span><span class="ansi-bold" style="color: rgb(0,135,0)">False</span>,
+<span class="ansi-green-intense-fg ansi-bold">    160</span> ):
+<span class="ansi-green-intense-fg ansi-bold">    161</span>     requestKwargs <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>get_request_dict(
+<span class="ansi-green-intense-fg ansi-bold">    162</span>         params<span style="color: rgb(98,98,98)">=</span>params,
+<span class="ansi-green-intense-fg ansi-bold">    163</span>         headers<span style="color: rgb(98,98,98)">=</span>headers,
+<span class="ansi-green-intense-fg ansi-bold">    164</span>         allow_redirects<span style="color: rgb(98,98,98)">=</span>allow_redirects,
+<span class="ansi-green-intense-fg ansi-bold">    165</span>         stream<span style="color: rgb(98,98,98)">=</span>stream,
+<span class="ansi-green-intense-fg ansi-bold">    166</span>     )
+<span class="ansi-green-fg">--&gt; 167</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">session</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">get</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">_update_url_scheme</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">url</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">*</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">*</span><span class="ansi-yellow-bg">requestKwargs</span><span class="ansi-yellow-bg">)</span>
+
+File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.13.0/x64/lib/python3.13/site-packages/requests/sessions.py:602</span>, in <span class="ansi-cyan-fg">Session.get</span><span class="ansi-blue-fg">(self, url, **kwargs)</span>
+<span class="ansi-green-intense-fg ansi-bold">    594</span> <span style="color: rgb(175,0,0)">r</span><span style="color: rgb(175,0,0)">&#34;&#34;&#34;Sends a GET request. Returns :class:`Response` object.</span>
+<span class="ansi-green-intense-fg ansi-bold">    595</span>
+<span class="ansi-green-intense-fg ansi-bold">    596</span> <span style="color: rgb(175,0,0)">:param url: URL for the new :class:`Request` object.</span>
+<span class="ansi-green-intense-fg ansi-bold">    597</span> <span style="color: rgb(175,0,0)">:param \*\*kwargs: Optional arguments that ``request`` takes.</span>
+<span class="ansi-green-intense-fg ansi-bold">    598</span> <span style="color: rgb(175,0,0)">:rtype: requests.Response</span>
+<span class="ansi-green-intense-fg ansi-bold">    599</span> <span style="color: rgb(175,0,0)">&#34;&#34;&#34;</span>
+<span class="ansi-green-intense-fg ansi-bold">    601</span> kwargs<span style="color: rgb(98,98,98)">.</span>setdefault(<span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">allow_redirects</span><span style="color: rgb(175,0,0)">&#34;</span>, <span class="ansi-bold" style="color: rgb(0,135,0)">True</span>)
+<span class="ansi-green-fg">--&gt; 602</span> <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">request</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#34;</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">GET</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#34;</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">url</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">*</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">*</span><span class="ansi-yellow-bg">kwargs</span><span class="ansi-yellow-bg">)</span>
+
+File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.13.0/x64/lib/python3.13/site-packages/requests/sessions.py:575</span>, in <span class="ansi-cyan-fg">Session.request</span><span class="ansi-blue-fg">(self, method, url, params, data, headers, cookies, files, auth, timeout, allow_redirects, proxies, hooks, stream, verify, cert, json)</span>
+<span class="ansi-green-intense-fg ansi-bold">    562</span> <span style="color: rgb(95,135,135)"># Create the Request.</span>
+<span class="ansi-green-intense-fg ansi-bold">    563</span> req <span style="color: rgb(98,98,98)">=</span> Request(
+<span class="ansi-green-intense-fg ansi-bold">    564</span>     method<span style="color: rgb(98,98,98)">=</span>method<span style="color: rgb(98,98,98)">.</span>upper(),
+<span class="ansi-green-intense-fg ansi-bold">    565</span>     url<span style="color: rgb(98,98,98)">=</span>url,
+<span class="ansi-green-fg">   (...)</span>
+<span class="ansi-green-intense-fg ansi-bold">    573</span>     hooks<span style="color: rgb(98,98,98)">=</span>hooks,
+<span class="ansi-green-intense-fg ansi-bold">    574</span> )
+<span class="ansi-green-fg">--&gt; 575</span> prep <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">prepare_request</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">req</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    577</span> proxies <span style="color: rgb(98,98,98)">=</span> proxies <span class="ansi-bold" style="color: rgb(175,0,255)">or</span> {}
+<span class="ansi-green-intense-fg ansi-bold">    579</span> settings <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>merge_environment_settings(
+<span class="ansi-green-intense-fg ansi-bold">    580</span>     prep<span style="color: rgb(98,98,98)">.</span>url, proxies, stream, verify, cert
+<span class="ansi-green-intense-fg ansi-bold">    581</span> )
+
+File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.13.0/x64/lib/python3.13/site-packages/requests/sessions.py:484</span>, in <span class="ansi-cyan-fg">Session.prepare_request</span><span class="ansi-blue-fg">(self, request)</span>
+<span class="ansi-green-intense-fg ansi-bold">    481</span>     auth <span style="color: rgb(98,98,98)">=</span> get_netrc_auth(request<span style="color: rgb(98,98,98)">.</span>url)
+<span class="ansi-green-intense-fg ansi-bold">    483</span> p <span style="color: rgb(98,98,98)">=</span> PreparedRequest()
+<span class="ansi-green-fg">--&gt; 484</span> <span class="ansi-yellow-bg">p</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">prepare</span><span class="ansi-yellow-bg">(</span>
+<span class="ansi-green-intense-fg ansi-bold">    485</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">method</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg">request</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">method</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">upper</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">    486</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">url</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg">request</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">url</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">    487</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">files</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg">request</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">files</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">    488</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">data</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg">request</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">data</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">    489</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">json</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg">request</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">json</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">    490</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">headers</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg">merge_setting</span><span class="ansi-yellow-bg">(</span>
+<span class="ansi-green-intense-fg ansi-bold">    491</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">request</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">headers</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">headers</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">dict_class</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg">CaseInsensitiveDict</span>
+<span class="ansi-green-intense-fg ansi-bold">    492</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">    493</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">params</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg">merge_setting</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">request</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">params</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">params</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">    494</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">auth</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg">merge_setting</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">auth</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">auth</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">    495</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">cookies</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg">merged_cookies</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">    496</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">hooks</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg">merge_hooks</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">request</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">hooks</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">hooks</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">    497</span> <span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    498</span> <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> p
+
+File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.13.0/x64/lib/python3.13/site-packages/requests/models.py:367</span>, in <span class="ansi-cyan-fg">PreparedRequest.prepare</span><span class="ansi-blue-fg">(self, method, url, headers, files, data, params, auth, cookies, hooks, json)</span>
+<span class="ansi-green-intense-fg ansi-bold">    364</span> <span style="color: rgb(175,0,0)">&#34;&#34;&#34;Prepares the entire request with the given parameters.&#34;&#34;&#34;</span>
+<span class="ansi-green-intense-fg ansi-bold">    366</span> <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>prepare_method(method)
+<span class="ansi-green-fg">--&gt; 367</span> <span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">prepare_url</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">url</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">params</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    368</span> <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>prepare_headers(headers)
+<span class="ansi-green-intense-fg ansi-bold">    369</span> <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>prepare_cookies(cookies)
+
+File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.13.0/x64/lib/python3.13/site-packages/requests/models.py:438</span>, in <span class="ansi-cyan-fg">PreparedRequest.prepare_url</span><span class="ansi-blue-fg">(self, url, params)</span>
+<span class="ansi-green-intense-fg ansi-bold">    435</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">raise</span> InvalidURL(<span style="color: rgb(98,98,98)">*</span>e<span style="color: rgb(98,98,98)">.</span>args)
+<span class="ansi-green-intense-fg ansi-bold">    437</span> <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> <span class="ansi-bold" style="color: rgb(175,0,255)">not</span> scheme:
+<span class="ansi-green-fg">--&gt; 438</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">raise</span> MissingSchema(
+<span class="ansi-green-intense-fg ansi-bold">    439</span>         <span style="color: rgb(175,0,0)">f</span><span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">Invalid URL </span><span class="ansi-bold" style="color: rgb(175,95,135)">{</span>url<span class="ansi-bold" style="color: rgb(175,95,135)">!r}</span><span style="color: rgb(175,0,0)">: No scheme supplied. </span><span style="color: rgb(175,0,0)">&#34;</span>
+<span class="ansi-green-intense-fg ansi-bold">    440</span>         <span style="color: rgb(175,0,0)">f</span><span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">Perhaps you meant https://</span><span class="ansi-bold" style="color: rgb(175,95,135)">{</span>url<span class="ansi-bold" style="color: rgb(175,95,135)">}</span><span style="color: rgb(175,0,0)">?</span><span style="color: rgb(175,0,0)">&#34;</span>
+<span class="ansi-green-intense-fg ansi-bold">    441</span>     )
+<span class="ansi-green-intense-fg ansi-bold">    443</span> <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> <span class="ansi-bold" style="color: rgb(175,0,255)">not</span> host:
+<span class="ansi-green-intense-fg ansi-bold">    444</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">raise</span> InvalidURL(<span style="color: rgb(175,0,0)">f</span><span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">Invalid URL </span><span class="ansi-bold" style="color: rgb(175,95,135)">{</span>url<span class="ansi-bold" style="color: rgb(175,95,135)">!r}</span><span style="color: rgb(175,0,0)">: No host supplied</span><span style="color: rgb(175,0,0)">&#34;</span>)
+
+<span class="ansi-red-fg">MissingSchema</span>: Invalid URL &#39;MockJenkinsScript/api/python&#39;: No scheme supplied. Perhaps you meant https://MockJenkinsScript/api/python?
 </pre></div></div>
 </div>
 </section>
@@ -135,8 +248,8 @@ Cell <span class="ansi-green-fg">In[1], line 10</span>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../gitAliases.html" class="btn btn-neutral float-left" title="Git aliases" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../BashCmdExamples.html" class="btn btn-neutral float-right" title="Run cmd on git output" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../20240511_git_aliases.html" class="btn btn-neutral float-left" title="Git aliases" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../20240622_bash_cmd_examples.html" class="btn btn-neutral float-right" title="Run cmd on git output" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
