@@ -34,7 +34,7 @@ Download generic tarball
 
    
 my-generic-package contents: package.json
-***************************
+*****************************************
 .. code-block:: json
 
 	{
