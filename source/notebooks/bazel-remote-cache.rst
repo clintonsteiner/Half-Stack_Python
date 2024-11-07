@@ -13,8 +13,8 @@ Install and run bazel-remote build cache
 As before our tarball will be essentially blank consisting of one
 file in a .tar.gz zip
 
-***************
 Confirm working
+***************
 .. code-block:: bash
 
    curl http://localhost:8080/status
@@ -22,6 +22,7 @@ Confirm working
 Upload tarball
 **************
 .. code-block:: bash
+
     sha256sum my-generic-package.tar.gz
     curl http://localhost:8080/cache/cas/c8bd358bd7eaa09bc206d3e6140c5cfcc5fdb90a0c0799155427ab75a519f123 --upload-file my-generic-package.tar.gz 
 
