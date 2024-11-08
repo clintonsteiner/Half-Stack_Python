@@ -73,7 +73,7 @@
         "\n",
         "def printPackageVersion():\n",
         "    import package\n",
-        "    print(f\"Currently loaded package version {package.version()}\"\n",
+        "    print(f\"Currently loaded package version {package.version()}\")\n",
         "\n",
         "if 'package' in sys.modules.keys():\n",
         "    # If already imported from somewhere else, remove\n",
