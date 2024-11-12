@@ -6,15 +6,15 @@ Based on notes: https://www.barbarianmeetscoding.com/boost-your-coding-fu-with-v
 Horizontal Nav Motions
 **********************
 
-- 0: first char
-- ^: first non-blank char
+* 0: first char
+* ^: first non-blank char
 
-- $: end char
-- g_: end non-blank char
+* $: end char
+* ``g_``: end non-blank char
 
-- f{character}: moves us to that char
-Use ; to get next match and , to get the previous
-- t{character}: moves just before next occurrence
+* f{character}: moves us to that char
+* Use ; to get next match and , to get the previous
+* t{character}: moves just before next occurrence
 
 Add in Operator to motions
 **************************
