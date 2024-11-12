@@ -1,13 +1,5 @@
 ipython
-ipython_genutils
-ipywidgets
-markupsafe
-myst-parser
-jupyter-sphinx
 nbsphinx
-nbsphinx-link
-shapely
 sphinx
-sphinx-markdown-builder
 sphinx-rtd-theme
 jenkinsapi
