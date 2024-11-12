@@ -18,5 +18,6 @@ def create_venv():
 
     subprocess.check_call([sys.executable, "-m", "pip", "install", "-r", "requirements.txt"])
     sphinx = os.path.join(VENV_PATH, "bin", "sphinx-build")
+    subprocess.check_call([sphinx, SOURCE_DIR, BUILD_DIR])
 
 create_venv()
