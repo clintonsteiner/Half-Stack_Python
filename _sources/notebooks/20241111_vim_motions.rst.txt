@@ -20,7 +20,8 @@ Add in Operator to motions
 **************************
 
 Structured {Operator}{count}{motion}
-| df' delete everything until occurrence of '
-| d/hello delete everything until hello
-| Inputting . allows you to repeat the last change
+
+* df' delete everything until occurrence of '
+* d/hello delete everything until hello
+* Inputting . allows you to repeat the last change
 
