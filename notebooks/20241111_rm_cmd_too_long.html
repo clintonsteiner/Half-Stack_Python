@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Git Aliases &mdash; Half Stack Python  documentation</title>
+  <title>Easy reference for find commands I come back to &mdash; Half Stack Python  documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
@@ -20,8 +20,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Threading python examples" href="python/20240214_threading_guide.html" />
-    <link rel="prev" title="Jenkins Python Automation" href="jenkins/20240621_jenkins_python_automation.html" /> 
+    <link rel="next" title="Jenkins Troubleshooting Tips Related to Path Errors" href="jenkins/20241107_jenkins_agent_path_variables.html" />
+    <link rel="prev" title="Vim Motions Notes" href="20241111_vim_motions.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -47,14 +47,17 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="20241111_rst_reference.html">11/11/2024 - RST Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="20241111_vim_motions.html">11/11/2024 - Vim Motions Notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="20241111_rm_cmd_too_long.html">11/11/2024 - rm command too long</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">11/11/2024 - rm command too long</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#rm-rf-dat">rm -rf ./*.dat</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="jenkins/20241107_jenkins_agent_path_variables.html">11/07/2024 - Jenkins agent path variables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="20241105_bazel_remote_cache.html">11/05/2024 - Generic package caching with bazel remote cache</a></li>
 <li class="toctree-l1"><a class="reference internal" href="20241031_npm_generic_packages.html">10/31/2024 - Generic npm packageing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python/20241017_python_path_tricks.html">10/17/2024 - PYTHONPATH Tricks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="20240622_bash_cmd_examples.html">6/22/2024  - Useful Bash Commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="jenkins/20240621_jenkins_python_automation.html">6/21/2024  - Jenkins automation in Python</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">5/11/2024  - Most used bash aliases for linux dev</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20240511_git_aliases.html">5/11/2024  - Most used bash aliases for linux dev</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python/20240214_threading_guide.html">2/14/2024  - Threading guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python/20231212_deep_copy_os_environ_shell_vs_python_discrepancy.html">12/12/2023 - Modifying a deepcopy of os.environ changes the lookup from the shell, but not the os.environ state</a></li>
 </ul>
@@ -73,9 +76,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Git Aliases</li>
+      <li class="breadcrumb-item active">Easy reference for find commands I come back to</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/notebooks/20240511_git_aliases.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/notebooks/20241111_rm_cmd_too_long.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -83,34 +86,23 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="git-aliases">
-<h1>Git Aliases<a class="headerlink" href="#git-aliases" title="Link to this heading"></a></h1>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">alias</span><span class="w"> </span>..<span class="o">=</span><span class="s1">&#39;cd ../&#39;</span>
-<span class="nb">alias</span><span class="w"> </span>...<span class="o">=</span><span class="s1">&#39;cd ../../&#39;</span>
-<span class="nb">alias</span><span class="w"> </span>....<span class="o">=</span><span class="s1">&#39;cd ../../../&#39;</span>
-
-<span class="nb">alias</span><span class="w"> </span><span class="nv">gd</span><span class="o">=</span><span class="s1">&#39;git diff&#39;</span>
-<span class="nb">alias</span><span class="w"> </span><span class="nv">gds</span><span class="o">=</span><span class="s1">&#39;git diff --staged&#39;</span>
-<span class="nb">alias</span><span class="w"> </span><span class="nv">gs</span><span class="o">=</span><span class="s1">&#39;git status&#39;</span>
-<span class="nb">alias</span><span class="w"> </span><span class="nv">ga</span><span class="o">=</span><span class="s1">&#39;git add&#39;</span>
-<span class="nb">alias</span><span class="w"> </span><span class="nv">gr</span><span class="o">=</span><span class="s1">&#39;git restore&#39;</span>
-<span class="nb">alias</span><span class="w"> </span><span class="nv">grs</span><span class="o">=</span><span class="s1">&#39;git restore --staged&#39;</span>
-<span class="nb">alias</span><span class="w"> </span><span class="nv">gc</span><span class="o">=</span><span class="s1">&#39;git commit&#39;</span>
-<span class="nb">alias</span><span class="w"> </span><span class="nv">gcm</span><span class="o">=</span><span class="s1">&#39;git commit -m&#39;</span>
-<span class="nb">alias</span><span class="w"> </span><span class="nv">gca</span><span class="o">=</span><span class="s1">&#39;git commit --amend --no-edit --date=now&#39;</span>
-<span class="nb">alias</span><span class="w"> </span><span class="nv">gb</span><span class="o">=</span><span class="s1">&#39;git branch&#39;</span>
-<span class="nb">alias</span><span class="w"> </span><span class="nv">gbdates</span><span class="o">=</span><span class="s2">&quot;git for-each-ref --sort=committerdate refs/heads/ --format=&#39;%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents-subject) - %(authorname) (%(color:green)%(committerdate:short)%color:reset))&#39;&quot;</span>
-<span class="nb">alias</span><span class="w"> </span><span class="nv">gbresethard</span><span class="o">=</span><span class="s1">&#39;git reset --hard @{u}&#39;</span>
+  <section id="easy-reference-for-find-commands-i-come-back-to">
+<h1>Easy reference for find commands I come back to<a class="headerlink" href="#easy-reference-for-find-commands-i-come-back-to" title="Link to this heading"></a></h1>
+<section id="rm-rf-dat">
+<h2>rm -rf ./<a href="#id1"><span class="problematic" id="id2">*</span></a>.dat<a class="headerlink" href="#rm-rf-dat" title="Link to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>find<span class="w"> </span>.<span class="w"> </span>-name<span class="w"> </span><span class="s2">&quot;*.rst&quot;</span><span class="w"> </span>-print0<span class="w"> </span>-exec<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="o">{}</span><span class="w"> </span>+
+find<span class="w"> </span>.<span class="w"> </span>-name<span class="w"> </span><span class="s2">&quot;*.rst&quot;</span><span class="w"> </span>-print0<span class="w"> </span>-exec<span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span><span class="o">{}</span><span class="w"> </span>+
 </pre></div>
 </div>
+</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="jenkins/20240621_jenkins_python_automation.html" class="btn btn-neutral float-left" title="Jenkins Python Automation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="python/20240214_threading_guide.html" class="btn btn-neutral float-right" title="Threading python examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="20241111_vim_motions.html" class="btn btn-neutral float-left" title="Vim Motions Notes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="jenkins/20241107_jenkins_agent_path_variables.html" class="btn btn-neutral float-right" title="Jenkins Troubleshooting Tips Related to Path Errors" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
