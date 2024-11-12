@@ -1,7 +1,7 @@
 Vim Motions Notes
 #################
 
-Based on notes: https://www.barbarianmeetscoding.com/boost-your-coding-fu-with-vscode-and-vim/moving-blazingly-fast-with-the-core-vim-motions/
+`Based on notes <https://www.barbarianmeetscoding.com/boost-your-coding-fu-with-vscode-and-vim/moving-blazingly-fast-with-the-core-vim-motions/>`_
 
 Horizontal Nav Motions
 **********************
