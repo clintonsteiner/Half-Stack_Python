@@ -9,6 +9,9 @@ Welcome to Half Stack Python - a blog written about linux, python, and other top
 .. toctree::
    :caption: Contents:
 
+   11/11/2024 - RST Reference <notebooks/20241111_rst_reference>
+   11/11/2024 - Vim Motions Notes <notebooks/20241111_vim_motions>
+   11/11/2024 - rm command too long <notebooks/20241111_rm_cmd_too_long>
    11/07/2024 - Jenkins agent path variables <notebooks/jenkins/20241107_jenkins_agent_path_variables>
    11/05/2024 - Generic package caching with bazel remote cache <notebooks/20241105_bazel_remote_cache>
    10/31/2024 - Generic npm packageing <notebooks/20241031_npm_generic_packages>
