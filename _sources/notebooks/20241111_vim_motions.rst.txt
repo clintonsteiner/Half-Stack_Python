@@ -1,7 +1,7 @@
 Vim Motions Notes
 #################
 
-Based on notes: https://www.barbarianmeetscoding.com/boost-your-coding-fu-with-vscode-and-vim/moving-blazingly-fast-with-the-core-vim-motions/
+`Based on notes <https://www.barbarianmeetscoding.com/boost-your-coding-fu-with-vscode-and-vim/moving-blazingly-fast-with-the-core-vim-motions/>`_
 
 Horizontal Nav Motions
 **********************
@@ -20,8 +20,7 @@ Add in Operator to motions
 **************************
 
 Structured {Operator}{count}{motion}
-df' delete everything until occurrence of '
-d/hello delete everything until hello
-
-Inputting . allows you to repeat the last change
+| df' delete everything until occurrence of '
+| d/hello delete everything until hello
+| Inputting . allows you to repeat the last change
 
