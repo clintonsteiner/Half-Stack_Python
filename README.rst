@@ -7,4 +7,4 @@ Local dev setup and testing
    :linenos:
    
    python ./bb.py # Will build web server in ./build 
-   python -m http.server 8080 -d source/ # will host web server at localhost:8000 until ctrl-c
+   python -m http.server 8000 -d source/ # will host web server at localhost:8000 until ctrl-c
