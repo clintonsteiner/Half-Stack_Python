@@ -6,14 +6,14 @@ Lists
 
 Ordered List
 
-.. code-block:: rst
+.. code-block:: RST
 
    #. Step 1.
    #. Step 2.
 
 Bulleted List in Ordered List
 
-.. code-block:: rst
+.. code-block:: RST
 
    #. Step 1.
          * Item 1.
@@ -25,7 +25,8 @@ Links
 
 Link to web page
 
-.. code-block:: rst
+.. code-block:: RST
    
    `Link text <url>`_
    `Blog <https://clintonsteiner.github.io/Half-Stack_Python/>`_
+`Blog <https://clintonsteiner.github.io/Half-Stack_Python/>`_
