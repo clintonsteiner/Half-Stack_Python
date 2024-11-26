@@ -22,6 +22,11 @@ Add in Operator to motions
 Structured {Operator}{count}{motion}
 
 * df' delete everything until occurrence of '
+* dtX deletes everything up to X
+* dTX deletes everything backward up to X
 * d/hello delete everything until hello
 * Inputting . allows you to repeat the last change
 
+VI Mode Bash Prompt
+*******************
+set -o vi

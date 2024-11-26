@@ -49,6 +49,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">11/11/2024 - Vim Motions Notes</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#horizontal-nav-motions">Horizontal Nav Motions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#add-in-operator-to-motions">Add in Operator to motions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#vi-mode-bash-prompt">VI Mode Bash Prompt</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="20241111_rm_cmd_too_long.html">11/11/2024 - rm command too long</a></li>
@@ -107,9 +108,15 @@
 <p>Structured {Operator}{count}{motion}</p>
 <ul class="simple">
 <li><p>df’ delete everything until occurrence of ‘</p></li>
+<li><p>dtX deletes everything up to X</p></li>
+<li><p>dTX deletes everything backward up to X</p></li>
 <li><p>d/hello delete everything until hello</p></li>
 <li><p>Inputting . allows you to repeat the last change</p></li>
 </ul>
+</section>
+<section id="vi-mode-bash-prompt">
+<h2>VI Mode Bash Prompt<a class="headerlink" href="#vi-mode-bash-prompt" title="Link to this heading"></a></h2>
+<p>set -o vi</p>
 </section>
 </section>
 
