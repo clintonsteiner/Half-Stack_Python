@@ -50,6 +50,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../20241111_rm_cmd_too_long.html">11/11/2024 - rm command too long</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">11/07/2024 - Jenkins agent path variables</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#agent-paths-for-a-user-are-derived-seperately-from-the-linux-user-path">Agent paths for a user are derived seperately from the linux user path</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#update-java-version">Update java version</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../20241105_bazel_remote_cache.html">11/05/2024 - Generic package caching with bazel remote cache</a></li>
@@ -96,6 +97,13 @@
 </pre></div>
 </div>
 <p>These variables are cached, to get to reload you may have to disconnect the node and relaunch it</p>
+</section>
+<section id="update-java-version">
+<h2>Update java version<a class="headerlink" href="#update-java-version" title="Link to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>update-alternatives<span class="w"> </span>--config<span class="w"> </span>java
+</pre></div>
+</div>
+<p>The above will set the java variables accordingly</p>
 </section>
 </section>
 
