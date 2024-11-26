@@ -5,12 +5,14 @@ Lists
 *****
 
 Ordered List
+
 .. code-block:: rst
 
    #. Step 1.
    #. Step 2.
 
 Bulleted List in Ordered List
+
 .. code-block:: rst
 
    #. Step 1.
@@ -22,6 +24,7 @@ Links
 *****
 
 Link to web page
+
 .. code-block:: rst
    
    `Link text <url>`_
