@@ -69,3 +69,8 @@ Github actions
         JENKINS_VERSION: ${{ matrix.token }}
       run: |
         uv run pytest -sv jenkinsapi_tests
+
+Example of polylith architecture
+********************************
+
+`polylith example of uv and a monorepo <https://github.com/DavidVujic/python-polylith-example-uv>`_
