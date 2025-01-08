@@ -123,11 +123,17 @@ uv<span class="w"> </span>venv
 <h2>Other notes<a class="headerlink" href="#other-notes" title="Link to this heading"></a></h2>
 <p>Dev dependencies installed by default</p>
 <p>To build, simply uv build</p>
-<p>[tool.setuptools]
-packages = [“jenkinsapi”, “jenkinsapi_utils”, “jenkinsapi_tests”]</p>
-<p>uv lock to generate lock file</p>
-<p>uv python uninstall –all # removes existing installs</p>
-<p>uv cache clean</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[tool.setuptools]</span>
+<span class="n">packages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;jenkinsapi&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;jenkinsapi_utils&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;jenkinsapi_tests&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>lock<span class="w"> </span><span class="c1"># to generate uv.lock file</span>
+
+uv<span class="w"> </span>python<span class="w"> </span>uninstall<span class="w"> </span>--all<span class="w"> </span><span class="c1"># removes existing installs</span>
+
+uv<span class="w"> </span>cache<span class="w"> </span>clean
+</pre></div>
+</div>
 </section>
 <section id="github-actions">
 <h2>Github actions<a class="headerlink" href="#github-actions" title="Link to this heading"></a></h2>
@@ -136,22 +142,22 @@ packages = [“jenkinsapi”, “jenkinsapi_utils”, “jenkinsapi_tests”]</p
 <span class="w">  </span><span class="nt">with</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">python-version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ matrix.python-version }}</span>
 <span class="w">    </span><span class="nt">enable-cache</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">    </span><span class="nt">cache-dependency-glob</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">\|</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">&quot;**/setup.cfg&quot;</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">&quot;**/pyproject.toml&quot;</span>
+<span class="w">    </span><span class="nt">cache-dependency-glob</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">      </span><span class="no">**/setup.cfg</span>
+<span class="w">      </span><span class="no">**/pyproject.toml</span>
 
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install python</span>
 <span class="w">  </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uv python install</span>
 
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Lint with flake8</span>
-<span class="w">  </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">\|</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">uv run flake8 jenkinsapi/</span>
+<span class="w">  </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">uv run flake8 jenkinsapi/</span>
 
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Test with pytest</span>
 <span class="w">  </span><span class="nt">env</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">JENKINS_VERSION</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ matrix.token }}</span>
-<span class="w">  </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">\|</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">uv run pytest -sv jenkinsapi_tests</span>
+<span class="w">  </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">uv run pytest -sv jenkinsapi_tests</span>
 </pre></div>
 </div>
 </section>
