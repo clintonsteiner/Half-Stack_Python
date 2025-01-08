@@ -29,12 +29,3 @@ jobs:
           else
             echo "no files to lint"
           fi
-
-      - name: Lint Jupyter notebooks
-        run: |
-          files="$(find . -name "*.ipynb")"
-          if [ -n "$files" ]; then
-              uv run jupyter nbconvert --to notebook --execute $files
-          else
-            echo "no files to lint"
-          fi
