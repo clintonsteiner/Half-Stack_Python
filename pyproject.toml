@@ -8,9 +8,9 @@ dependencies = [
     "ipykernel>=6.29.5",
     "ipython>=8.18.1",
     "nbsphinx>=0.9.6",
-    "sphinx-rtd-theme>=3.0.2",
     "sphinx>=7.4.7",
     "jenkinsapi>=0.3.13",
+    "furo>=2024.8.6",
 ]
 
 [dependency-groups]
