@@ -1,4 +1,3 @@
----
 name: Lint RST Files
 "on": [push, pull_request]
 
