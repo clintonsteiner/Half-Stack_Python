@@ -53,6 +53,9 @@ Github actions
       with:
         python-version: ${{ matrix.python-version }}
         enable-cache: true
+        cache-dependency-glob: |
+          **/setup.cfg
+          **/pyproject.toml
 
     - name: Install python
       run: uv python install
