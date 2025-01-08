@@ -117,7 +117,7 @@
 <p>This makes sense, running <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">sys;</span> <span class="pre">sys.path</span></code> shows us that package1 is listed first hence it was loaded</p>
 <section id="Overriding-default-resolution-behaviors">
 <h4>Overriding default resolution behaviors<a class="headerlink" href="#Overriding-default-resolution-behaviors" title="Link to this heading"></a></h4>
-<div class="nbinput docutils container">
+<div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
@@ -144,43 +144,20 @@
 <span class="kn">import</span><span class="w"> </span><span class="nn">importlib.util</span>
 <span class="n">spec</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">spec_from_file_location</span><span class="p">(</span><span class="s1">&#39;package&#39;</span><span class="p">,</span> <span class="s1">&#39;~/package1/package.py&#39;</span><span class="p">)</span>
 <span class="n">mod</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">module_from_spec</span><span class="p">(</span><span class="n">spec</span><span class="p">)</span>
-<span class="n">spec</span><span class="o">.</span><span class="n">loader</span><span class="o">.</span><span class="n">exec_module</span><span class="p">(</span><span class="n">mod</span><span class="p">)</span>
+<span class="c1">#spec.loader.exec_module(mod)</span>
 
-<span class="n">mod</span><span class="o">.</span><span class="n">version</span><span class="p">()</span> <span class="c1"># Outputs Version 1</span>
-<span class="n">package</span><span class="o">.</span><span class="n">version</span><span class="p">()</span> <span class="c1"># Outputs Version 2</span>
+<span class="c1">#mod.version() # Outputs Version 1</span>
+<span class="c1">#package.version() # Outputs Version 2</span>
 
 <span class="c1"># What about overriding the already loaded version of the module with our new version</span>
 <span class="c1"># Now our module versions are out of sync, to hack in Version 1 again globally</span>
-<span class="k">del</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="n">MODULE</span><span class="p">]</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="n">MODULE</span><span class="p">]</span> <span class="o">=</span> <span class="n">mod</span>
+<span class="c1">#del sys.modules[MODULE]</span>
+<span class="c1">#sys.modules[MODULE] = mod</span>
 
-<span class="n">mod</span><span class="o">.</span><span class="n">version</span><span class="p">()</span> <span class="c1"># Outputs Version 1</span>
-<span class="n">package</span><span class="o">.</span><span class="n">version</span><span class="p">()</span> <span class="c1"># Outputs Version 1</span>
+<span class="c1">#mod.version() # Outputs Version 1</span>
+<span class="c1">#package.version() # Outputs Version 1</span>
 </pre></div>
 </div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">FileNotFoundError</span>                         Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[1], line 24</span>
-<span class="ansi-green-intense-fg ansi-bold">     22</span> spec <span style="color: rgb(98,98,98)">=</span> importlib<span style="color: rgb(98,98,98)">.</span>util<span style="color: rgb(98,98,98)">.</span>spec_from_file_location(<span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">package</span><span style="color: rgb(175,0,0)">&#39;</span>, <span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">~/package1/package.py</span><span style="color: rgb(175,0,0)">&#39;</span>)
-<span class="ansi-green-intense-fg ansi-bold">     23</span> mod <span style="color: rgb(98,98,98)">=</span> importlib<span style="color: rgb(98,98,98)">.</span>util<span style="color: rgb(98,98,98)">.</span>module_from_spec(spec)
-<span class="ansi-green-fg">---&gt; 24</span> <span class="ansi-yellow-bg">spec</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">loader</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">exec_module</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">mod</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">     26</span> mod<span style="color: rgb(98,98,98)">.</span>version() <span style="color: rgb(95,135,135)"># Outputs Version 1</span>
-<span class="ansi-green-intense-fg ansi-bold">     27</span> package<span style="color: rgb(98,98,98)">.</span>version() <span style="color: rgb(95,135,135)"># Outputs Version 2</span>
-
-File <span class="ansi-green-fg">&lt;frozen importlib._bootstrap_external&gt;:1022</span>, in <span class="ansi-cyan-fg">exec_module</span><span class="ansi-blue-fg">(self, module)</span>
-
-File <span class="ansi-green-fg">&lt;frozen importlib._bootstrap_external&gt;:1159</span>, in <span class="ansi-cyan-fg">get_code</span><span class="ansi-blue-fg">(self, fullname)</span>
-
-File <span class="ansi-green-fg">&lt;frozen importlib._bootstrap_external&gt;:1217</span>, in <span class="ansi-cyan-fg">get_data</span><span class="ansi-blue-fg">(self, path)</span>
-
-<span class="ansi-red-fg">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;/home/runner/work/Half-Stack_Python/Half-Stack_Python/source/notebooks/python/~/package1/package.py&#39;
-</pre></div></div>
 </div>
 </section>
 </section>
