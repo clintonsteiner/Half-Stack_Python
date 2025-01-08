@@ -36,14 +36,19 @@ Dev dependencies installed by default
 
 To build, simply uv build
 
-[tool.setuptools]
-packages = ["jenkinsapi", "jenkinsapi_utils", "jenkinsapi_tests"]
+.. code:: toml
 
-uv lock to generate lock file
+    [tool.setuptools]
+    packages = ["jenkinsapi", "jenkinsapi_utils", "jenkinsapi_tests"]
 
-uv python uninstall --all # removes existing installs
 
-uv cache clean
+.. code:: bash
+
+    uv lock # to generate uv.lock file
+
+    uv python uninstall --all # removes existing installs
+
+    uv cache clean
 
 Github actions
 **************
@@ -55,21 +60,21 @@ Github actions
       with:
         python-version: ${{ matrix.python-version }}
         enable-cache: true
-        cache-dependency-glob: \|
-          "**/setup.cfg"
-          "**/pyproject.toml"
+        cache-dependency-glob: |
+          **/setup.cfg
+          **/pyproject.toml
 
     - name: Install python
       run: uv python install
 
     - name: Lint with flake8
-      run: \|
+      run: |
         uv run flake8 jenkinsapi/ 
 
     - name: Test with pytest
       env:
         JENKINS_VERSION: ${{ matrix.token }}
-      run: \|
+      run: |
         uv run pytest -sv jenkinsapi_tests
 
 Example of polylith architecture
