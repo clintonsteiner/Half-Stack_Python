@@ -23,7 +23,13 @@ jobs:
         run: uv run rstcheck **/*.rst
 
       - name: Lint YAML files
-        run: uv run yamllint --config-data "{extends: default, rules: {document-start: {present: false}}}" $(find . -name "*.yml" -o -name "*.yaml")
+        run: |
+          files="$(find . -name "*.yml" -o -name "*.yaml")"
+          if [ -n "$files" ]; then
+						uv run yamllint --config-data "{extends: default, rules: {document-start: {present: false}}}" $files
+          else
+            echo "no files to lint"
+          fi
 
       - name: Lint Jupyter notebooks
         run: |
