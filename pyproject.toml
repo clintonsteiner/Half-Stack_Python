@@ -12,3 +12,10 @@ dependencies = [
     "sphinx>=7.4.7",
     "jenkinsapi>=0.3.13",
 ]
+
+[dependency-groups]
+lint = [
+    "nbconvert>=7.16.5",
+    "rstcheck>=6.2.4",
+    "yamllint>=1.35.1",
+]

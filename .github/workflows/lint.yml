@@ -1,0 +1,33 @@
+---
+name: Lint RST Files
+"on": [push, pull_request]
+
+jobs:
+  lint-rst:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
+        with:
+          python-version: '3.13'
+          enable-cache: true
+
+      - name: Install linters
+        run: |
+          uv sync --only-group lint
+
+      - name: Lint RST files
+        run: uv run rstcheck **/*.rst
+
+      - name: Lint YAML files
+        run: uv run yamllint **/*.yml
+
+      - name: Lint Jupyter notebooks
+        run: |
+          for notebook in **/*.ipynb; do
+            uv run jupyter nbconvert --to notebook --execute "$notebook"
+          done
+...
