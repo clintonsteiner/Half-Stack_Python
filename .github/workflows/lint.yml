@@ -34,9 +34,7 @@ jobs:
         run: |
           files="$(find . -name "*.ipynb")"
           if [ -n "$files" ]; then
-            for notebook in $files do
-              uv run jupyter nbconvert --to notebook --execute "$notebook"
-            done
+              uv run jupyter nbconvert --to notebook --execute $files
           else
             echo "no files to lint"
           fi
