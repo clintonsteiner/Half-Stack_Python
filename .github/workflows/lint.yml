@@ -23,7 +23,7 @@ jobs:
         run: uv run rstcheck **/*.rst
 
       - name: Lint YAML files
-        run: uv run yamllint"{extends: default, rules: {document-start: {present: false}}}" $(find . -name "*.yml" -o -name "*.yaml")
+        run: uv run yamllint --config-data "{extends: default, rules: {document-start: {present: false}}}" $(find . -name "*.yml" -o -name "*.yaml")
 
       - name: Lint Jupyter notebooks
         run: |
