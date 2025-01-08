@@ -9,7 +9,7 @@ Welcome to Half Stack Python - a blog written about linux, python, and other top
 .. toctree::
    :caption: Contents:
 
-   01/07/2025 - Using UV for Python Package Management <20250107_using_uv>
+   01/07/2025 - Using UV for Python Package Management <notebooks/python/20250107_using_uv>
    11/11/2024 - RST Reference <notebooks/20241111_rst_reference>
    11/11/2024 - Vim Motions Notes <notebooks/20241111_vim_motions>
    11/11/2024 - rm command too long <notebooks/20241111_rm_cmd_too_long>
