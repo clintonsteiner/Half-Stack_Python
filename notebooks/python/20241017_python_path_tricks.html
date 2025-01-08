@@ -7,7 +7,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PYTHONPATH Tricks &mdash; Half Stack Python  documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../_static/nbsphinx-code-cells.css?v=2aa19091" />
 
@@ -121,12 +121,12 @@
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Changing default behavior, using path above, package.version() will output Version 1</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
 <span class="n">MODULE</span> <span class="o">=</span> <span class="s1">&#39;package&#39;</span>
 
-<span class="k">def</span> <span class="nf">printPackageVersion</span><span class="p">():</span>
-    <span class="kn">import</span> <span class="nn">package</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">printPackageVersion</span><span class="p">():</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">package</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Currently loaded package version </span><span class="si">{</span><span class="n">package</span><span class="o">.</span><span class="n">version</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="s1">&#39;package&#39;</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
@@ -140,7 +140,7 @@
 <span class="n">printPackageVersion</span><span class="p">()</span> <span class="c1"># outputs Version2</span>
 
 <span class="c1"># What if we wanted to use both versions of the package and use them both in the same file</span>
-<span class="kn">import</span> <span class="nn">importlib.util</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">importlib.util</span>
 <span class="n">spec</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">spec_from_file_location</span><span class="p">(</span><span class="s1">&#39;package&#39;</span><span class="p">,</span> <span class="s1">&#39;~/package1/package.py&#39;</span><span class="p">)</span>
 <span class="n">mod</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">module_from_spec</span><span class="p">(</span><span class="n">spec</span><span class="p">)</span>
 <span class="n">spec</span><span class="o">.</span><span class="n">loader</span><span class="o">.</span><span class="n">exec_module</span><span class="p">(</span><span class="n">mod</span><span class="p">)</span>
@@ -171,11 +171,11 @@ Cell <span class="ansi-green-fg">In[1], line 18</span>
 <span class="ansi-green-intense-fg ansi-bold">     17</span> sys<span style="color: rgb(98,98,98)">.</span>path<span style="color: rgb(98,98,98)">.</span>insert(<span style="color: rgb(98,98,98)">1</span>, os<span style="color: rgb(98,98,98)">.</span>path<span style="color: rgb(98,98,98)">.</span>abspath(<span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">~/package2</span><span style="color: rgb(175,0,0)">&#34;</span>))
 <span class="ansi-green-fg">---&gt; 18</span> <span class="ansi-yellow-bg">printPackageVersion</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span> <span style="color: rgb(95,135,135)"># outputs Version2 </span>
 <span class="ansi-green-intense-fg ansi-bold">     20</span> <span style="color: rgb(95,135,135)"># What if we wanted to use both versions of the package and use them both in the same file</span>
-<span class="ansi-green-intense-fg ansi-bold">     21</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span> <span class="ansi-bold" style="color: rgb(0,0,255)">importlib</span><span class="ansi-bold" style="color: rgb(0,0,255)">.</span><span class="ansi-bold" style="color: rgb(0,0,255)">util</span>
+<span class="ansi-green-intense-fg ansi-bold">     21</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-bold" style="color: rgb(0,0,255)">importlib</span><span class="ansi-bold" style="color: rgb(0,0,255)">.</span><span class="ansi-bold" style="color: rgb(0,0,255)">util</span>
 
 Cell <span class="ansi-green-fg">In[1], line 7</span>, in <span class="ansi-cyan-fg">printPackageVersion</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-intense-fg ansi-bold">      6</span> <span class="ansi-bold" style="color: rgb(0,135,0)">def</span> <span style="color: rgb(0,0,255)">printPackageVersion</span>():
-<span class="ansi-green-fg">----&gt; 7</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">import</span> <span class="ansi-bold" style="color: rgb(0,0,255)">package</span>
+<span class="ansi-green-intense-fg ansi-bold">      6</span> <span class="ansi-bold" style="color: rgb(0,135,0)">def</span><span style="color: rgb(188,188,188)"> </span><span style="color: rgb(0,0,255)">printPackageVersion</span>():
+<span class="ansi-green-fg">----&gt; 7</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">import</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-bold" style="color: rgb(0,0,255)">package</span>
 <span class="ansi-green-intense-fg ansi-bold">      8</span>     <span style="color: rgb(0,135,0)">print</span>(<span style="color: rgb(175,0,0)">f</span><span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">Currently loaded package version </span><span class="ansi-bold" style="color: rgb(175,95,135)">{</span>package<span style="color: rgb(98,98,98)">.</span>version()<span class="ansi-bold" style="color: rgb(175,95,135)">}</span><span style="color: rgb(175,0,0)">&#34;</span>)
 
 <span class="ansi-red-fg">ModuleNotFoundError</span>: No module named &#39;package&#39;

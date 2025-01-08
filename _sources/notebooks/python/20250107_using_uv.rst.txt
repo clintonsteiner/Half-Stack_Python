@@ -1,0 +1,71 @@
+Using UV Package Manager
+########################
+
+Create a project
+****************
+
+.. code:: bash
+
+   uv init hello-world # if outside dir, else uv init
+   uv run hello.py # runs a python file
+
+Dependencies
+************
+
+.. code:: bash
+
+   uv add 'requests==2.31.0'
+   uv add pytest --dev
+   uv remove requests
+   # upgrade dependency
+   uv lock --upgrade-package requests
+
+Install specific version
+************************
+
+.. code:: bash
+   uv python install 3.8
+   uv venv
+   source .venv/bin/activate
+
+Other notes
+***********
+
+Dev dependencies installed by default
+
+To build, simply uv build
+
+[tool.setuptools]
+packages = ["jenkinsapi", "jenkinsapi_utils", "jenkinsapi_tests"]
+
+uv lock to generate lock file
+
+uv python uninstall --all # removes existing installs
+
+uv cache clean
+
+Github actions
+**************
+
+.. code:: yaml
+    - name: Install uv
+      uses: astral-sh/setup-uv@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+        enable-cache: true
+        cache-dependency-glob: |
+          **/setup.cfg
+          **/pyproject.toml
+
+    - name: Install python
+      run: uv python install
+
+    - name: Lint with flake8
+      run: |
+        uv run flake8 jenkinsapi/ 
+
+    - name: Test with pytest
+      env:
+        JENKINS_VERSION: ${{ matrix.token }}
+      run: |
+        uv run pytest -sv jenkinsapi_tests

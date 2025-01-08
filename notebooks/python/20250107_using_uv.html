@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jenkins Troubleshooting Tips Related to Path Errors &mdash; Half Stack Python  documentation</title>
+  <title>Using UV Package Manager &mdash; Half Stack Python  documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
 
@@ -19,9 +19,7 @@
       <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Example using bazel-remote-cache to host packages" href="../20241105_bazel_remote_cache.html" />
-    <link rel="prev" title="Easy reference for find commands I come back to" href="../20241111_rm_cmd_too_long.html" /> 
+    <link rel="search" title="Search" href="../../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -44,23 +42,19 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../20241111_rst_reference.html">11/11/2024 - RST Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../20241111_vim_motions.html">11/11/2024 - Vim Motions Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../20241111_rm_cmd_too_long.html">11/11/2024 - rm command too long</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">11/07/2024 - Jenkins agent path variables</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#agent-paths-for-a-user-are-derived-seperately-from-the-linux-user-path">Agent paths for a user are derived seperately from the linux user path</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#update-java-version">Update java version</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../jenkins/20241107_jenkins_agent_path_variables.html">11/07/2024 - Jenkins agent path variables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../20241105_bazel_remote_cache.html">11/05/2024 - Generic package caching with bazel remote cache</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../20241031_npm_generic_packages.html">10/31/2024 - Generic npm packageing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../python/20241017_python_path_tricks.html">10/17/2024 - PYTHONPATH Tricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20241017_python_path_tricks.html">10/17/2024 - PYTHONPATH Tricks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../20240622_bash_cmd_examples.html">6/22/2024  - Useful Bash Commands</a></li>
-<li class="toctree-l1"><a class="reference internal" href="20240621_jenkins_python_automation.html">6/21/2024  - Jenkins automation in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../jenkins/20240621_jenkins_python_automation.html">6/21/2024  - Jenkins automation in Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../20240511_git_aliases.html">5/11/2024  - Most used bash aliases for linux dev</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../python/20240214_threading_guide.html">2/14/2024  - Threading guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../python/20231212_deep_copy_os_environ_shell_vs_python_discrepancy.html">12/12/2023 - Modifying a deepcopy of os.environ changes the lookup from the shell, but not the os.environ state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20240214_threading_guide.html">2/14/2024  - Threading guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20231212_deep_copy_os_environ_shell_vs_python_discrepancy.html">12/12/2023 - Modifying a deepcopy of os.environ changes the lookup from the shell, but not the os.environ state</a></li>
 </ul>
 
         </div>
@@ -77,9 +71,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Jenkins Troubleshooting Tips Related to Path Errors</li>
+      <li class="breadcrumb-item active">Using UV Package Manager</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../../_sources/notebooks/jenkins/20241107_jenkins_agent_path_variables.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/notebooks/python/20250107_using_uv.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -87,33 +81,47 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="jenkins-troubleshooting-tips-related-to-path-errors">
-<h1>Jenkins Troubleshooting Tips Related to Path Errors<a class="headerlink" href="#jenkins-troubleshooting-tips-related-to-path-errors" title="Link to this heading"></a></h1>
-<section id="agent-paths-for-a-user-are-derived-seperately-from-the-linux-user-path">
-<h2>Agent paths for a user are derived seperately from the linux user path<a class="headerlink" href="#agent-paths-for-a-user-are-derived-seperately-from-the-linux-user-path" title="Link to this heading"></a></h2>
-<p>So being ssh’d into a machine and running echo $PATH is not the true output</p>
-<p>Instead, run the following from the node side script console in the Jenkins web gui</p>
-<div class="highlight-groovy notranslate"><div class="highlight"><pre><span></span><span class="n">println</span><span class="w"> </span><span class="n">System</span><span class="o">.</span><span class="na">getenv</span><span class="o">(</span><span class="s2">&quot;PATH&quot;</span><span class="o">)</span>
+  <section id="using-uv-package-manager">
+<h1>Using UV Package Manager<a class="headerlink" href="#using-uv-package-manager" title="Link to this heading"></a></h1>
+<section id="create-a-project">
+<h2>Create a project<a class="headerlink" href="#create-a-project" title="Link to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>init<span class="w"> </span>hello-world<span class="w"> </span><span class="c1"># if outside dir, else uv init</span>
+uv<span class="w"> </span>run<span class="w"> </span>hello.py<span class="w"> </span><span class="c1"># runs a python file</span>
 </pre></div>
 </div>
-<p>These variables are cached, to get to reload you may have to disconnect the node and relaunch it</p>
 </section>
-<section id="update-java-version">
-<h2>Update java version<a class="headerlink" href="#update-java-version" title="Link to this heading"></a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>update-alternatives<span class="w"> </span>--config<span class="w"> </span>java
+<section id="dependencies">
+<h2>Dependencies<a class="headerlink" href="#dependencies" title="Link to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>add<span class="w"> </span><span class="s1">&#39;requests==2.31.0&#39;</span>
+uv<span class="w"> </span>add<span class="w"> </span>pytest<span class="w"> </span>--dev
+uv<span class="w"> </span>remove<span class="w"> </span>requests
+<span class="c1"># upgrade dependency</span>
+uv<span class="w"> </span>lock<span class="w"> </span>--upgrade-package<span class="w"> </span>requests
 </pre></div>
 </div>
-<p>The above will set the java variables accordingly</p>
+</section>
+<section id="install-specific-version">
+<h2>Install specific version<a class="headerlink" href="#install-specific-version" title="Link to this heading"></a></h2>
+</section>
+<section id="other-notes">
+<h2>Other notes<a class="headerlink" href="#other-notes" title="Link to this heading"></a></h2>
+<p>Dev dependencies installed by default</p>
+<p>To build, simply uv build</p>
+<p>[tool.setuptools]
+packages = [“jenkinsapi”, “jenkinsapi_utils”, “jenkinsapi_tests”]</p>
+<p>uv lock to generate lock file</p>
+<p>uv python uninstall –all # removes existing installs</p>
+<p>uv cache clean</p>
+</section>
+<section id="github-actions">
+<h2>Github actions<a class="headerlink" href="#github-actions" title="Link to this heading"></a></h2>
 </section>
 </section>
 
 
            </div>
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../20241111_rm_cmd_too_long.html" class="btn btn-neutral float-left" title="Easy reference for find commands I come back to" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../20241105_bazel_remote_cache.html" class="btn btn-neutral float-right" title="Example using bazel-remote-cache to host packages" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-    </div>
+          <footer>
 
   <hr/>
 
