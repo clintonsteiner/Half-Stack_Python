@@ -127,7 +127,7 @@
 <span class="n">MODULE</span> <span class="o">=</span> <span class="s1">&#39;package&#39;</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">printPackageVersion</span><span class="p">():</span>
-    <span class="c1">#import package</span>
+    <span class="k">pass</span>    <span class="c1">#import package</span>
     <span class="c1">#print(f&quot;Currently loaded package version {package.version()}&quot;)</span>
 
 <span class="k">if</span> <span class="s1">&#39;package&#39;</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
@@ -164,11 +164,22 @@
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-<span class="ansi-cyan-fg">  Cell </span><span class="ansi-green-fg">In[1], line 10</span>
-<span class="ansi-red-fg">    if &#39;package&#39; in sys.modules.keys():</span>
-    ^
-<span class="ansi-red-fg">IndentationError</span><span class="ansi-red-fg">:</span> expected an indented block after function definition on line 6
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">FileNotFoundError</span>                         Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[1], line 24</span>
+<span class="ansi-green-intense-fg ansi-bold">     22</span> spec <span style="color: rgb(98,98,98)">=</span> importlib<span style="color: rgb(98,98,98)">.</span>util<span style="color: rgb(98,98,98)">.</span>spec_from_file_location(<span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">package</span><span style="color: rgb(175,0,0)">&#39;</span>, <span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">~/package1/package.py</span><span style="color: rgb(175,0,0)">&#39;</span>)
+<span class="ansi-green-intense-fg ansi-bold">     23</span> mod <span style="color: rgb(98,98,98)">=</span> importlib<span style="color: rgb(98,98,98)">.</span>util<span style="color: rgb(98,98,98)">.</span>module_from_spec(spec)
+<span class="ansi-green-fg">---&gt; 24</span> <span class="ansi-yellow-bg">spec</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">loader</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">exec_module</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">mod</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     26</span> mod<span style="color: rgb(98,98,98)">.</span>version() <span style="color: rgb(95,135,135)"># Outputs Version 1</span>
+<span class="ansi-green-intense-fg ansi-bold">     27</span> package<span style="color: rgb(98,98,98)">.</span>version() <span style="color: rgb(95,135,135)"># Outputs Version 2</span>
 
+File <span class="ansi-green-fg">&lt;frozen importlib._bootstrap_external&gt;:1022</span>, in <span class="ansi-cyan-fg">exec_module</span><span class="ansi-blue-fg">(self, module)</span>
+
+File <span class="ansi-green-fg">&lt;frozen importlib._bootstrap_external&gt;:1159</span>, in <span class="ansi-cyan-fg">get_code</span><span class="ansi-blue-fg">(self, fullname)</span>
+
+File <span class="ansi-green-fg">&lt;frozen importlib._bootstrap_external&gt;:1217</span>, in <span class="ansi-cyan-fg">get_data</span><span class="ansi-blue-fg">(self, path)</span>
+
+<span class="ansi-red-fg">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;/home/runner/work/Half-Stack_Python/Half-Stack_Python/source/notebooks/python/~/package1/package.py&#39;
 </pre></div></div>
 </div>
 </section>
