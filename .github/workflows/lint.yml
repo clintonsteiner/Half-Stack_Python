@@ -25,7 +25,7 @@ jobs:
         run: |
           files="$(find . -name "*.yml" -o -name "*.yaml")"
           if [ -n "$files" ]; then
-            uv run yamllint --config-data "{extends: default, rules: {document-start: {present: false}}}" $files
+            uv run yamllint $files
           else
             echo "no files to lint"
           fi
