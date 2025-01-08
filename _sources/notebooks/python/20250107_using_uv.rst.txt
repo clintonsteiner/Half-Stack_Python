@@ -47,15 +47,15 @@ uv cache clean
 Github actions
 **************
 
-.. code-block:: yaml
+.. code:: yaml
     - name: Install uv
       uses: astral-sh/setup-uv@v5
       with:
         python-version: ${{ matrix.python-version }}
         enable-cache: true
         cache-dependency-glob: |
-          \ *\ */setup.cfg`
-          \ *\ */pyproject.toml
+          ``**/setup.cfg``
+          ``**/pyproject.toml``
 
     - name: Install python
       run: uv python install
