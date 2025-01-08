@@ -53,21 +53,21 @@ Github actions
       with:
         python-version: ${{ matrix.python-version }}
         enable-cache: true
-        cache-dependency-glob: |
-          ``**/setup.cfg``
-          ``**/pyproject.toml``
+        cache-dependency-glob: \|
+          "**/setup.cfg"
+          "**/pyproject.toml"
 
     - name: Install python
       run: uv python install
 
     - name: Lint with flake8
-      run: |
+      run: \|
         uv run flake8 jenkinsapi/ 
 
     - name: Test with pytest
       env:
         JENKINS_VERSION: ${{ matrix.token }}
-      run: |
+      run: \|
         uv run pytest -sv jenkinsapi_tests
 
 Example of polylith architecture
