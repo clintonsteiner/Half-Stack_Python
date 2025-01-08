@@ -113,6 +113,11 @@ uv<span class="w"> </span>lock<span class="w"> </span>--upgrade-package<span cla
 </section>
 <section id="install-specific-version">
 <h2>Install specific version<a class="headerlink" href="#install-specific-version" title="Link to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>python<span class="w"> </span>install<span class="w"> </span><span class="m">3</span>.8
+uv<span class="w"> </span>venv
+<span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+</pre></div>
+</div>
 </section>
 <section id="other-notes">
 <h2>Other notes<a class="headerlink" href="#other-notes" title="Link to this heading"></a></h2>
@@ -126,6 +131,29 @@ packages = [“jenkinsapi”, “jenkinsapi_utils”, “jenkinsapi_tests”]</p
 </section>
 <section id="github-actions">
 <h2>Github actions<a class="headerlink" href="#github-actions" title="Link to this heading"></a></h2>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install uv</span>
+<span class="w">  </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">astral-sh/setup-uv@v5</span>
+<span class="w">  </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">python-version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ matrix.python-version }}</span>
+<span class="w">    </span><span class="nt">enable-cache</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">cache-dependency-glob</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">\|</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">&quot;**/setup.cfg&quot;</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">&quot;**/pyproject.toml&quot;</span>
+
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install python</span>
+<span class="w">  </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uv python install</span>
+
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Lint with flake8</span>
+<span class="w">  </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">\|</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">uv run flake8 jenkinsapi/</span>
+
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Test with pytest</span>
+<span class="w">  </span><span class="nt">env</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">JENKINS_VERSION</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ matrix.token }}</span>
+<span class="w">  </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">\|</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">uv run pytest -sv jenkinsapi_tests</span>
+</pre></div>
+</div>
 </section>
 <section id="example-of-polylith-architecture">
 <h2>Example of polylith architecture<a class="headerlink" href="#example-of-polylith-architecture" title="Link to this heading"></a></h2>
