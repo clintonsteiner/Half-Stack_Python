@@ -1,6 +1,0 @@
-ipython
-ipykernel
-nbsphinx
-sphinx
-sphinx-rtd-theme
-jenkinsapi
