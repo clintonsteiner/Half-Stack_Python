@@ -7,6 +7,7 @@ Welcome to Half Stack Python - a blog written about linux, python, and other top
 ===================================================================================
 
 .. toctree::
+   :maxdepth: 2
    :caption: Contents:
 
    01/14/2025 - Bash Special Variables <notebooks/20250114_bash_special_variables>

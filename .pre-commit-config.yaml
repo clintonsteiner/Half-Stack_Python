@@ -31,7 +31,8 @@ repos:
         name: Check reStructuredText files
         entry: rstcheck
         language: python
-        files: \.rst$
+        types: [rst]
+        require_serial: true
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v5.0.0

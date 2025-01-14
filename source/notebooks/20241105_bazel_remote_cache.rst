@@ -4,7 +4,6 @@ Example using bazel-remote-cache to host packages
 Install and run bazel-remote build cache
 ****************************************
 .. code-block:: bash
-   :linenos:
 
    /opt/homebrew/bin/bazel-remote --max_size 1000 \
    --dir /Users/cs/bazel_cache --profile_host 127.0.0.1 \
