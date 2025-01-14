@@ -1,12 +1,12 @@
 repos:
   - repo: https://github.com/psf/black
-    rev: 23.9.1
+    rev: 24.10.0
     hooks:
       - id: black
         args: [--line-length=120]
 
   - repo: https://github.com/PyCQA/flake8
-    rev: 6.1.0
+    rev: 7.1.1
     hooks:
       - id: flake8
         args: [--line-length=120]
@@ -19,10 +19,19 @@ repos:
       - id: isort
 
   - repo: https://github.com/adrienverge/yamllint
-    rev: v1.32.0
+    rev: v1.35.1
     hooks:
       - id: yamllint
         args: [--strict]
+
+  - repo: https://github.com/rstcheck/rstcheck
+    rev: v6.2.4
+    hooks:
+      - id: rstcheck
+        name: Check reStructuredText files
+        entry: rstcheck
+        language: python
+        files: \.rst$
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.5.0
