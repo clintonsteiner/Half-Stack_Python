@@ -3,8 +3,8 @@ README
 
 Local dev setup and testing
 ***************************
+
 .. code-block:: bash
-   :linenos:
 
    uv sync
    uv run pre-commit install
