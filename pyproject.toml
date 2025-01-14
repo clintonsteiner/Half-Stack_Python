@@ -21,7 +21,6 @@ dev = [
     "black>=24.10.0",
     "docutils>=0.21.2",
     "flake8>=7.1.1",
-    "isort>=5.13.2",
     "myst-parser>=3.0.1",
     "pre-commit>=4.0.1",
     "rstcheck[sphinx]>=6.2.4",
