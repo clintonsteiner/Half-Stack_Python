@@ -1,5 +1,13 @@
 name: Lint RST Files
-"on": [push, pull_request]
+
+on:  # yamllint disable-line rule:truthy
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+  workflow_dispatch:
 
 jobs:
   lint-rst:

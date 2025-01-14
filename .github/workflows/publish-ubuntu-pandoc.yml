@@ -1,6 +1,14 @@
 name: Publish Ubuntu Pandoc Docker
 
-"on": [push, pull_request]
+on:  # yamllint disable-line rule:truthy
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+  workflow_dispatch:
+
 jobs:
   publish-ubuntu-pandoc-docker:
     name: Publish Ubuntu Pandoc Docker
