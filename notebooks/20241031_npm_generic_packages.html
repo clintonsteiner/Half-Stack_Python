@@ -10,7 +10,7 @@
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=302659d7" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=76870612" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=542df26c" />
     
     
 
@@ -204,6 +204,7 @@
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="20250114_bash_special_variables.html">01/14/2025 - Bash Special Variables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python/20250107_using_uv.html">01/07/2025 - Using UV for Python Package Management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="20241111_rst_reference.html">11/11/2024 - RST Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="20241111_vim_motions.html">11/11/2024 - Vim Motions Notes</a></li>
@@ -261,17 +262,17 @@
 <h1>Example Bundling of Package with NPM<a class="headerlink" href="#example-bundling-of-package-with-npm" title="Link to this heading">¶</a></h1>
 <section id="install-verdaccio">
 <h2>Install Verdaccio<a class="headerlink" href="#install-verdaccio" title="Link to this heading">¶</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="w"> </span>npm<span class="w"> </span>install<span class="w"> </span>verdaccio
-<span class="linenos">2</span><span class="w"> </span>verdaccio
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>npm<span class="w"> </span>install<span class="w"> </span>verdaccio
+verdaccio
 </pre></div>
 </div>
 </section>
 <section id="create-example-package">
 <h2>Create example package<a class="headerlink" href="#create-example-package" title="Link to this heading">¶</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="w"> </span>head<span class="w"> </span>-c<span class="w"> </span>100M<span class="w"> </span>&lt;/dev/urandom<span class="w"> </span>&gt;<span class="w"> </span>myfile
-<span class="linenos">2</span>
-<span class="linenos">3</span><span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>myPackage/files/
-<span class="linenos">4</span><span class="w"> </span>tar<span class="w"> </span>-czf<span class="w"> </span>./myPackage/files/myPackage-1.0.0.tgz<span class="w"> </span>myfile
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>head<span class="w"> </span>-c<span class="w"> </span>100M<span class="w"> </span>&lt;/dev/urandom<span class="w"> </span>&gt;<span class="w"> </span>myfile
+
+mkdir<span class="w"> </span>-p<span class="w"> </span>myPackage/files/
+tar<span class="w"> </span>-czf<span class="w"> </span>./myPackage/files/myPackage-1.0.0.tgz<span class="w"> </span>myfile
 </pre></div>
 </div>
 </section>
@@ -291,15 +292,15 @@
 </section>
 <section id="package-and-upload-to-local-npm-server">
 <h2>Package and upload to local npm server<a class="headerlink" href="#package-and-upload-to-local-npm-server" title="Link to this heading">¶</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="w"> </span>npm<span class="w"> </span>pack<span class="w"> </span>myPackage
-<span class="linenos">2</span><span class="w"> </span>npm<span class="w"> </span>publish<span class="w"> </span>myPackage<span class="w"> </span>--registry<span class="w"> </span>http://localhost:4873
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>npm<span class="w"> </span>pack<span class="w"> </span>myPackage
+npm<span class="w"> </span>publish<span class="w"> </span>myPackage<span class="w"> </span>--registry<span class="w"> </span>http://localhost:4873
 </pre></div>
 </div>
 </section>
 <section id="install-and-view-package">
 <h2>Install and view package<a class="headerlink" href="#install-and-view-package" title="Link to this heading">¶</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>npm<span class="w"> </span>install<span class="w"> </span>myPackage<span class="w"> </span>--registry<span class="w"> </span>http://localhost:4873
-<span class="linenos">2</span>ls<span class="w"> </span>-grtha<span class="w"> </span>./*myPackage*
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>npm<span class="w"> </span>install<span class="w"> </span>myPackage<span class="w"> </span>--registry<span class="w"> </span>http://localhost:4873
+ls<span class="w"> </span>-grtha<span class="w"> </span>./*myPackage*
 </pre></div>
 </div>
 </section>

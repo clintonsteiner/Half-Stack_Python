@@ -4,7 +4,6 @@ Example using bazel-remote-cache to host packages
 Install and run bazel-remote build cache
 ****************************************
 .. code-block:: bash
-   :linenos:
 
    /opt/homebrew/bin/bazel-remote --max_size 1000 \
    --dir /Users/cs/bazel_cache --profile_host 127.0.0.1 \
@@ -24,15 +23,15 @@ Upload tarball
 .. code-block:: bash
 
     sha256sum my-generic-package.tar.gz
-    curl http://localhost:8080/cache/cas/c8bd358bd7eaa09bc206d3e6140c5cfcc5fdb90a0c0799155427ab75a519f123 --upload-file my-generic-package.tar.gz 
+    curl http://localhost:8080/cache/cas/c8bd358bd7eaa09bc206d3e6140c5cfcc5fdb90a0c0799155427ab75a519f123 --upload-file my-generic-package.tar.gz
 
 Download generic tarball
 ************************
 .. code-block:: bash
-   
+
     curl -o ./generic.tar.gz http://localhost:8080/cache/cas/5f4f12461a593abdff2a279e72697574b2086ace76def0adc9db593ff8e5354f
 
-   
+
 my-generic-package contents: package.json
 *****************************************
 .. code-block:: json
@@ -44,4 +43,3 @@ my-generic-package contents: package.json
 	  "main": "index.js",
 	  "files": ["files/my-tarball.tgz"]
 	}
-

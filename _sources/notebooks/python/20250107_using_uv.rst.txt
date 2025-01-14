@@ -69,7 +69,7 @@ Github actions
 
     - name: Lint with flake8
       run: |
-        uv run flake8 jenkinsapi/ 
+        uv run flake8 jenkinsapi/
 
     - name: Test with pytest
       env:

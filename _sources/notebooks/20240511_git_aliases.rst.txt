@@ -6,7 +6,7 @@ Git Aliases
    alias ..='cd ../'
    alias ...='cd ../../'
    alias ....='cd ../../../'
-   
+
    alias gd='git diff'
    alias gds='git diff --staged'
    alias gs='git status'
@@ -19,4 +19,3 @@ Git Aliases
    alias gb='git branch'
    alias gbdates="git for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents-subject) - %(authorname) (%(color:green)%(committerdate:short)%color:reset))'"
    alias gbresethard='git reset --hard @{u}'
-

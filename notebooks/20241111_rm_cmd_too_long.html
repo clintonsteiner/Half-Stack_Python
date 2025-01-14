@@ -10,7 +10,7 @@
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=302659d7" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=76870612" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=542df26c" />
     
     
 
@@ -204,6 +204,7 @@
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="20250114_bash_special_variables.html">01/14/2025 - Bash Special Variables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python/20250107_using_uv.html">01/07/2025 - Using UV for Python Package Management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="20241111_rst_reference.html">11/11/2024 - RST Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="20241111_vim_motions.html">11/11/2024 - Vim Motions Notes</a></li>
@@ -259,8 +260,9 @@
         <article role="main" id="furo-main-content">
           <section id="easy-reference-for-find-commands-i-come-back-to">
 <h1>Easy reference for find commands I come back to<a class="headerlink" href="#easy-reference-for-find-commands-i-come-back-to" title="Link to this heading">¶</a></h1>
-<section id="rm-rf-dat">
-<h2>rm <code class="docutils literal notranslate"><span class="pre">-rf</span></code> ./<a href="#id1"><span class="problematic" id="id2">*</span></a>.dat<a class="headerlink" href="#rm-rf-dat" title="Link to this heading">¶</a></h2>
+<section id="fix-rm-to-long-error">
+<h2>Fix rm to long error<a class="headerlink" href="#fix-rm-to-long-error" title="Link to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">-rf</span> <span class="pre">./*.dat</span></code></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>find<span class="w"> </span>.<span class="w"> </span>-name<span class="w"> </span><span class="s2">&quot;*.rst&quot;</span><span class="w"> </span>-print0<span class="w"> </span>-exec<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="o">{}</span><span class="w"> </span>+
 find<span class="w"> </span>.<span class="w"> </span>-name<span class="w"> </span><span class="s2">&quot;*.rst&quot;</span><span class="w"> </span>-print0<span class="w"> </span>-exec<span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span><span class="o">{}</span><span class="w"> </span>+
 </pre></div>
@@ -323,7 +325,7 @@ find<span class="w"> </span>.<span class="w"> </span>-name<span class="w"> </spa
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Easy reference for find commands I come back to</a><ul>
-<li><a class="reference internal" href="#rm-rf-dat">rm <code class="docutils literal notranslate"><span class="pre">-rf</span></code> ./*.dat</a></li>
+<li><a class="reference internal" href="#fix-rm-to-long-error">Fix rm to long error</a></li>
 </ul>
 </li>
 </ul>

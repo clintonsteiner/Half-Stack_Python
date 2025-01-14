@@ -3,14 +3,14 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Using UV Package Manager" href="notebooks/python/20250107_using_uv.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Bash Special Variables" href="notebooks/20250114_bash_special_variables.html" />
 
     <!-- Generated with Sphinx 8.1.3 and Furo 2024.08.06 -->
         <title>Half Stack Python documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=76870612" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=542df26c" />
     
     
 
@@ -204,6 +204,7 @@
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/20250114_bash_special_variables.html">01/14/2025 - Bash Special Variables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks/python/20250107_using_uv.html">01/07/2025 - Using UV for Python Package Management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks/20241111_rst_reference.html">11/11/2024 - RST Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks/20241111_vim_motions.html">11/11/2024 - Vim Motions Notes</a></li>
@@ -262,6 +263,12 @@
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/20250114_bash_special_variables.html">01/14/2025 - Bash Special Variables</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/20250114_bash_special_variables.html#example-usage">Example Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/20250114_bash_special_variables.html#execute-parsed-bash-command">Execute Parsed bash command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/20250114_bash_special_variables.html#awk-guide-for-substrings">Awk Guide for Substrings</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks/python/20250107_using_uv.html">01/07/2025 - Using UV for Python Package Management</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="notebooks/python/20250107_using_uv.html#create-a-project">Create a project</a></li>
 <li class="toctree-l2"><a class="reference internal" href="notebooks/python/20250107_using_uv.html#dependencies">Dependencies</a></li>
@@ -283,7 +290,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks/20241111_rm_cmd_too_long.html">11/11/2024 - rm command too long</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="notebooks/20241111_rm_cmd_too_long.html#rm-rf-dat">rm <code class="docutils literal notranslate"><span class="pre">-rf</span></code> ./*.dat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/20241111_rm_cmd_too_long.html#fix-rm-to-long-error">Fix rm to long error</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks/jenkins/20241107_jenkins_agent_path_variables.html">11/07/2024 - Jenkins agent path variables</a><ul>
@@ -309,13 +316,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks/python/20241017_python_path_tricks.html">10/17/2024 - PYTHONPATH Tricks</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="notebooks/python/20241017_python_path_tricks.html#What-is-PYTHONPATH">What is PYTHONPATH</a></li>
-<li class="toctree-l2"><a class="reference internal" href="notebooks/python/20241017_python_path_tricks.html#Handling-of-dependencies-with-multiple-versions">Handling of dependencies with multiple versions</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="notebooks/python/20241017_python_path_tricks.html#Experiment">Experiment</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="notebooks/python/20241017_python_path_tricks.html#Overriding-default-resolution-behaviors">Overriding default resolution behaviors</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/python/20241017_python_path_tricks.html#Handling-of-dependencies-with-multiple-versions">Handling of dependencies with multiple versions</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks/20240622_bash_cmd_examples.html">6/22/2024  - Useful Bash Commands</a></li>
@@ -342,12 +343,12 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="notebooks/python/20250107_using_uv.html">
+          <a class="next-page" href="notebooks/20250114_bash_special_variables.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Using UV Package Manager</div>
+                <div class="title">Bash Special Variables</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
