@@ -1,20 +1,19 @@
 name: Sphinx build
-"on": [push, pull_request]
+
+on:  # yamllint disable-line rule:truthy
+  workflow_run:
+    workflows: ["Publish Ubuntu Pandoc Docker"]
+    types: ["completed"]
 
 jobs:
   sphinx-build:
     runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/${{ github.repository_owner }}/pandoc-ubuntu:latest
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.github_token }}
     steps:
-      - uses: actions/checkout@v4
-      - name: Install uv
-        uses: astral-sh/setup-uv@v4
-        with:
-          python-version: '3.13'
-          enable-cache: true
-      - run: uv python install
-
-      - name: Install pandoc
-        run: sudo apt install -y pandoc
 
       - name: Build HTML
         run: make html
@@ -22,6 +21,7 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
+          github_token: ${{ secrets.github_token }}
           name: html-docs
           path: ./build/html/
 
@@ -29,5 +29,5 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         if: github.ref == 'refs/heads/master'
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.github_token }}
           publish_dir: ./build/html

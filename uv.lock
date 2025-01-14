@@ -488,10 +488,6 @@ dev = [
     { name = "isort" },
     { name = "pre-commit" },
     { name = "rstcheck" },
-]
-lint = [
-    { name = "nbconvert" },
-    { name = "rstcheck" },
     { name = "yamllint" },
 ]
 
@@ -511,10 +507,6 @@ dev = [
     { name = "flake8", specifier = ">=7.1.1" },
     { name = "isort", specifier = ">=5.13.2" },
     { name = "pre-commit", specifier = ">=4.0.1" },
-    { name = "rstcheck", specifier = ">=6.2.4" },
-]
-lint = [
-    { name = "nbconvert", specifier = ">=7.16.5" },
     { name = "rstcheck", specifier = ">=6.2.4" },
     { name = "yamllint", specifier = ">=1.35.1" },
 ]

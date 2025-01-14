@@ -16,16 +16,10 @@ jobs:
 
       - name: Install linters
         run: |
-          uv sync --only-group lint
+          uv run pre-commit install
 
       - name: Lint RST files
-        run: uv run rstcheck **/*.rst
-
-      - name: Lint YAML files
         run: |
-          files="$(find . -name "*.yml" -o -name "*.yaml")"
-          if [ -n "$files" ]; then
-            uv run yamllint $files
-          else
-            echo "no files to lint"
-          fi
+          uv run pre-commit run --all-files || \
+          echo "Pre-commit hooks failed. Please run 'pre-commit run --all-files' locally to resolve issues." && \
+          exit 1
