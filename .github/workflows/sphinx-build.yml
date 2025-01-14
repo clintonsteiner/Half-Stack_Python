@@ -10,7 +10,6 @@ on:  # yamllint disable-line rule:truthy
 jobs:
   sphinx-build:
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     container:
       image: ghcr.io/${{ github.repository_owner }}/pandoc-ubuntu:latest
       credentials:
