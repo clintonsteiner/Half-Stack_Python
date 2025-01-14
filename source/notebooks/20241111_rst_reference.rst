@@ -34,7 +34,7 @@ Links
 Link to web page
 
 .. code-block:: RST
-   
+
    `Link text <url>`_
    `Blog <https://clintonsteiner.github.io/Half-Stack_Python/>`_
 

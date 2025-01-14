@@ -11,11 +11,19 @@ dependencies = [
     "sphinx>=7.4.7",
     "jenkinsapi>=0.3.13",
     "furo>=2024.8.6",
+    "docutils>=0.21.2",
+    "pygments>=2.19.1",
+    "myst-parser>=3.0.1",
 ]
 
 [dependency-groups]
-lint = [
-    "nbconvert>=7.16.5",
-    "rstcheck>=6.2.4",
+dev = [
+    "black>=24.10.0",
+    "docutils>=0.21.2",
+    "flake8>=7.1.1",
+    "myst-parser>=3.0.1",
+    "pre-commit>=4.0.1",
+    "rstcheck[sphinx]>=6.2.4",
+    "tomli>=2.2.1",
     "yamllint>=1.35.1",
 ]

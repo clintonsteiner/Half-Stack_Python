@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Configuration file for the Sphinx documentation builder.
 #
 # For the full list of built-in configuration values, see the documentation:
@@ -13,7 +14,7 @@ author = "CS"
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = ['sphinx.ext.autosectionlabel']
+extensions = ["sphinx.ext.autosectionlabel"]
 nbsphinx_allow_errors = True
 extensions = [
     "nbsphinx",
@@ -33,5 +34,4 @@ html_show_sphinx = False
 html_logo = "_static/c3po.jpg"
 
 html_static_path = ["_static"]
-html_css_files = ['custom.css']
-
+html_css_files = ["custom.css"]

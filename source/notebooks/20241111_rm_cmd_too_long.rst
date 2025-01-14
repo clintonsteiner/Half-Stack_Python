@@ -1,8 +1,11 @@
 Easy reference for find commands I come back to
 ###############################################
 
-rm ``-rf`` ./*.dat
-******************
+Fix rm to long error
+********************
+
+``rm -rf ./*.dat``
+
 .. code-block:: bash
 
    find . -name "*.rst" -print0 -exec echo {} +

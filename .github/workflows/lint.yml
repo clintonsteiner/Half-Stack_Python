@@ -1,5 +1,13 @@
 name: Lint RST Files
-"on": [push, pull_request]
+
+on:  # yamllint disable-line rule:truthy
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+  workflow_dispatch:
 
 jobs:
   lint-rst:
@@ -16,16 +24,8 @@ jobs:
 
       - name: Install linters
         run: |
-          uv sync --only-group lint
+          uv run pre-commit install
 
       - name: Lint RST files
-        run: uv run rstcheck **/*.rst
-
-      - name: Lint YAML files
         run: |
-          files="$(find . -name "*.yml" -o -name "*.yaml")"
-          if [ -n "$files" ]; then
-            uv run yamllint $files
-          else
-            echo "no files to lint"
-          fi
+          uv run pre-commit run --all-files
