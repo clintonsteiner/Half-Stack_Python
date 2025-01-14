@@ -1,42 +1,35 @@
 repos:
-  # Black for Python code formatting
   - repo: https://github.com/psf/black
-    rev: 23.9.1  # Replace with the latest stable version
+    rev: 23.9.1
     hooks:
       - id: black
-        # No args needed; Black will read the configuration from pyproject.toml
+        args: [--line-length=120]
 
-  # Flake8 for linting Python code
   - repo: https://github.com/PyCQA/flake8
-    rev: 6.1.0  # Replace with the latest stable version
+    rev: 6.1.0
     hooks:
       - id: flake8
-        # Flake8 does not natively support pyproject.toml; use a setup.cfg or tox.ini
-        args: []
+        args: [--line-length=120]
         additional_dependencies:
-          - flake8-bugbear  # Optional advanced linting plugin
+          - flake8-bugbear
 
-  # isort for sorting imports
   - repo: https://github.com/pycqa/isort
-    rev: 5.13.2  # Replace with the latest stable version
+    rev: 5.13.2
     hooks:
       - id: isort
-        # No args needed; isort will read the configuration from pyproject.toml
 
-  # Yamllint for YAML syntax and style checking
   - repo: https://github.com/adrienverge/yamllint
-    rev: v1.32.0  # Replace with the latest stable version
+    rev: v1.32.0
     hooks:
       - id: yamllint
         args: [--strict]
 
-  # Pre-commit hooks for general file fixes
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.5.0  # Replace with the latest stable version
+    rev: v4.5.0
     hooks:
-      - id: trailing-whitespace  # Removes trailing whitespace
-      - id: end-of-file-fixer    # Ensures files end with a single newline
-      - id: check-yaml           # Validates YAML syntax
-      - id: check-json           # Validates JSON syntax
-      - id: check-added-large-files  # Warns about committing large files
-      - id: fix-encoding-pragma  # Adds encoding pragma to Python files
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-json
+      - id: check-added-large-files
+      - id: fix-encoding-pragma
