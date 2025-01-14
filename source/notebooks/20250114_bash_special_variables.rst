@@ -102,4 +102,3 @@ Notes
 
 - The default field separator is a space. Use the ``-F`` option to specify a custom delimiter.
 - Conditions can be added to extract substrings only when specific criteria are met, e.g., :bash:`if ($2 > 100)`.
-
