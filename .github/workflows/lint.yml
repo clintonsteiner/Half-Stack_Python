@@ -28,6 +28,4 @@ jobs:
 
       - name: Lint RST files
         run: |
-          uv run pre-commit run --all-files || \
-          echo "Pre-commit hooks failed. Please run 'pre-commit run --all-files' locally to resolve issues." && \
-          exit 1
+          uv run pre-commit run --all-files
