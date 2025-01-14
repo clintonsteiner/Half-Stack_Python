@@ -6,5 +6,5 @@ Local dev setup and testing
 .. code-block:: bash
    :linenos:
    
-   python ./bb.py # Will build web server in ./build 
-   python -m http.server 8000 -d source/ # will host web server at localhost:8000 until ctrl-c
+   make html
+   uv run python -m http.server --directory build/html/
