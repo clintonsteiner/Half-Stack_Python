@@ -1,7 +1,7 @@
 FROM ubuntu:22.04
 
 WORKDIR /app
-RUN apt update && apt install -y pandoc make
+RUN apt update && apt install -y pandoc make git
 
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 ENV UV_LINK_MODE=copy
